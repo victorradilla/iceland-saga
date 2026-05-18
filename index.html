@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ísland · 12-Night Saga · May 23 – Jun 4, 2026</title>
+<meta name="description" content="A 12-night Iceland Ring Road itinerary with Google Maps deep links for every stop, parking app guidance, and hotel bookings.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0e0d;
+    --paper:#f4f1ea;
+    --cream:#ebe5d7;
+    --moss:#1f3a30;
+    --moss-light:#2c5446;
+    --ash:#5a5d57;
+    --gold:#c9a44a;
+    --gold-bright:#e0bd5f;
+    --rust:#9c4a2a;
+    --rule:rgba(10,14,13,.18);
+    --rule-light:rgba(10,14,13,.08);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{overflow-x:clip;max-width:100vw}
+  body{overflow-x:clip;max-width:100vw}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter Tight',sans-serif;
+    font-weight:400;
+    line-height:1.5;
+  }
+  img{max-width:100%;height:auto;display:block}
+
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100vh;
+    background:
+      linear-gradient(180deg,rgba(10,14,13,.45) 0%,rgba(10,14,13,.25) 40%,rgba(10,14,13,.88) 100%),
+      url('https://images.pexels.com/photos/18421397/pexels-photo-18421397.jpeg?auto=compress&cs=tinysrgb&w=2400') center/cover no-repeat,
+      var(--ink);
+    color:var(--paper);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:32px 32px 48px;
+    position:relative;
+  }
+  .hero-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    opacity:0.85;
+    gap:16px;
+  }
+  .hero-top .right{text-align:right;line-height:1.7}
+  .hero-mid{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    margin-top:60px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:var(--gold-bright);
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .eyebrow::before{content:'';width:40px;height:1px;background:var(--gold-bright)}
+  h1.title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:clamp(56px,13vw,200px);
+    line-height:0.88;
+    letter-spacing:-0.02em;
+    font-style:italic;
+    word-break:break-word;
+    hyphens:none;
+  }
+  h1.title em{
+    font-style:normal;
+    font-weight:500;
+    color:var(--gold-bright);
+  }
+  .lede{
+    max-width:540px;
+    font-size:clamp(15px,2.4vw,19px);
+    line-height:1.55;
+    font-weight:300;
+    margin-top:8px;
+    opacity:0.92;
+  }
+  .hero-bot{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:0;
+    border-top:1px solid rgba(244,241,234,.25);
+    padding-top:24px;
+    margin-top:48px;
+  }
+  .stat{
+    padding:14px 16px 14px 0;
+    border-right:1px solid rgba(244,241,234,.15);
+    border-bottom:1px solid rgba(244,241,234,.15);
+  }
+  .stat:nth-child(2n){border-right:none;padding-right:0;padding-left:16px}
+  .stat:nth-last-child(-n+2){border-bottom:none}
+  .stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;opacity:0.65;margin-bottom:6px}
+  .stat-value{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,5vw,40px);font-weight:400;line-height:1}
+  .stat-sub{font-size:11px;opacity:0.7;margin-top:4px;line-height:1.3}
+
+  /* ============ SECTION SHELL ============ */
+  section{padding:80px 24px}
+  .container{max-width:1240px;margin:0 auto}
+  .section-head{margin-bottom:56px}
+  .section-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--gold);margin-bottom:18px}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,96px);font-weight:300;line-height:0.95;letter-spacing:-0.01em;max-width:900px;word-break:break-word}
+  .section-title em{font-style:italic;color:var(--moss)}
+  .section-deck{margin-top:20px;max-width:580px;font-size:clamp(15px,2vw,18px);line-height:1.55;color:var(--ash);font-weight:300}
+
+  /* ============ OVERVIEW ============ */
+  .overview{background:var(--cream);position:relative}
+  .overview::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--rule)}
+  .ov-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+  .ov-image{aspect-ratio:4/3;background-size:cover;background-position:center;position:relative;width:100%}
+  .ov-image::after{content:'64°N';position:absolute;bottom:12px;left:12px;color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+  .ov-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,60px);font-weight:400;line-height:1;letter-spacing:-0.01em;margin-bottom:28px;word-break:break-word}
+  .ov-text h2 em{font-style:italic;color:var(--moss)}
+  .ov-para{font-size:clamp(15px,2vw,17px);line-height:1.7;margin-bottom:18px;color:var(--ink)}
+  .ov-para:first-of-type::first-letter{font-family:'Cormorant Garamond',serif;font-size:56px;float:left;line-height:0.85;margin:6px 10px 0 0;color:var(--moss);font-weight:500}
+  .ov-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px;padding-top:28px;border-top:1px solid var(--rule)}
+  .meta-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);margin-bottom:8px}
+  .meta-val{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,22px);color:var(--ink)}
+
+  /* ============ CHAPTERS ============ */
+  .chapter{border-top:1px solid var(--rule);padding:64px 24px}
+  .chapter:nth-of-type(even){background:var(--cream)}
+  .chap-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:32px}
+
+  .chap-rail{align-self:start}
+  .chap-num-wrap{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .chap-night{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase}
+  .chap-num{font-family:'Cormorant Garamond',serif;font-size:72px;line-height:0.85;font-weight:300;color:var(--ink);font-feature-settings:"lnum"}
+  .chap-num em{font-size:28px;color:var(--gold);font-style:normal;vertical-align:top;margin-left:-2px}
+  .chap-dates{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--ash);line-height:1.75}
+  .chap-dates .arrow{color:var(--moss);margin:0 6px}
+  .chap-dates .nights{display:inline-block;margin-top:4px;color:var(--moss);font-weight:500}
+
+  .chap-place{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--moss);margin-bottom:14px}
+  .chap-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,52px);font-weight:400;line-height:1;letter-spacing:-0.01em;margin-bottom:22px;word-break:break-word}
+  .chap-title em{font-style:italic;color:var(--moss-light)}
+  .chap-lead{font-size:clamp(15px,2.2vw,18px);line-height:1.6;color:var(--ink);margin-bottom:22px;font-weight:300}
+  .chap-lead::first-letter{font-family:'Cormorant Garamond',serif;font-size:48px;float:left;line-height:0.85;margin:6px 10px 0 0;color:var(--moss);font-weight:500}
+  .chap-body{font-size:clamp(14px,1.9vw,15px);line-height:1.75;color:#2a2e2c;margin-bottom:16px}
+  .chap-body strong{color:var(--moss);font-weight:600}
+
+  /* ITINERARY */
+  .itinerary{margin-top:28px;padding:20px;background:rgba(31,58,48,.05);border-left:2px solid var(--moss)}
+  .itin-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--moss);margin-bottom:14px}
+  .itin-row{display:grid;grid-template-columns:70px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid rgba(31,58,48,.1);align-items:baseline}
+  .itin-row:last-child{border-bottom:none}
+  .itin-time{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--moss);text-transform:uppercase;font-weight:500;line-height:1.4}
+  .itin-desc{font-size:13.5px;line-height:1.55;color:var(--ink)}
+  .itin-desc strong{color:var(--moss);font-weight:600}
+
+  .chap-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;padding-top:20px;border-top:1px solid var(--rule-light)}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.15em;text-transform:uppercase;padding:5px 9px;background:rgba(31,58,48,.08);color:var(--moss);border-radius:2px}
+
+  /* HOTEL CARD */
+  .chap-card{background:var(--paper);border:1px solid var(--rule);overflow:hidden;width:100%}
+  .chapter:nth-of-type(even) .chap-card{background:var(--paper)}
+  .chap-img{aspect-ratio:16/10;background-size:cover;background-position:center;position:relative;width:100%}
+  .star-badge{position:absolute;top:12px;right:12px;background:var(--ink);color:var(--gold-bright);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;padding:6px 10px;text-transform:uppercase}
+  .chap-card-body{padding:24px}
+  .hotel-name{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,28px);font-weight:500;line-height:1.08;margin-bottom:6px;word-break:break-word}
+  .hotel-loc{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ash);margin-bottom:14px;word-break:break-word}
+  .hotel-blurb{font-size:14px;line-height:1.55;color:var(--ash);margin-bottom:18px}
+  .hotel-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 0;border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);margin-bottom:18px}
+  .h-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);margin-bottom:4px}
+  .h-stat-v{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,3vw,20px);color:var(--ink);font-weight:500}
+  .h-stat-v.small{font-size:13px;font-family:'Inter Tight',sans-serif;font-weight:500}
+
+  .links{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:2}
+  .lnk{flex:1 1 140px;display:flex;align-items:center;justify-content:center;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);color:var(--ink);transition:all .2s;text-align:center;cursor:pointer}
+  .lnk:hover{background:var(--ink);color:var(--paper);transform:translateY(-1px);box-shadow:0 4px 12px rgba(10,14,13,.15)}
+  .lnk.primary{background:var(--moss);color:var(--paper);border-color:var(--moss);font-weight:500}
+  .lnk.primary:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-1px);box-shadow:0 4px 12px rgba(10,14,13,.2)}
+
+  .chap-gallery{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  .chap-gallery-img{aspect-ratio:16/10;background-size:cover;background-position:center;position:relative}
+  .chap-gallery-img .img-cap{position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:linear-gradient(transparent,rgba(10,14,13,.7));font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,241,234,.9)}
+
+  .day-flow{margin-top:20px;padding:14px 18px;background:rgba(31,58,48,.06);border-left:2px solid var(--moss)}
+  .day-flow-title{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.25em;text-transform:uppercase;color:var(--moss);margin-bottom:8px}
+  .day-flow-text{font-size:13px;line-height:1.55;color:var(--ink)}
+  .day-flow-text strong{color:var(--moss);font-weight:600}
+
+  /* ============ MINI-MAP ============ */
+  /* Hidden on mobile, shown as a sticky widget on desktop */
+  .minimap{display:none}
+
+  @media (min-width:1100px){
+    .container{max-width:1600px;margin:0 auto;padding-right:340px}
+    .chap-grid{max-width:1600px;margin:0 auto;padding-right:340px}
+    .minimap{
+      display:block;
+      position:fixed;
+      top:50%;
+      right:24px;
+      transform:translateY(-50%);
+      width:300px;
+      background:rgba(10,14,13,.96);
+      color:var(--paper);
+      padding:22px 22px 18px;
+      border:1px solid rgba(224,189,95,.35);
+      z-index:100;
+      font-family:'JetBrains Mono',monospace;
+      backdrop-filter:blur(8px);
+      box-shadow:0 24px 60px rgba(0,0,0,.35), 0 0 0 6px rgba(244,241,234,.04);
+    }
+    .minimap-title{
+      font-size:9px;
+      letter-spacing:0.3em;
+      text-transform:uppercase;
+      color:var(--gold-bright);
+      margin-bottom:8px;
+    }
+    .minimap-current{
+      font-family:'Cormorant Garamond',serif;
+      font-size:22px;
+      line-height:1.1;
+      color:var(--paper);
+      margin-bottom:16px;
+      min-height:26px;
+      font-style:italic;
+      transition:opacity .3s ease;
+    }
+    .minimap-current .num{
+      color:var(--gold-bright);
+      font-style:normal;
+      margin-right:8px;
+      font-size:20px;
+    }
+    .minimap-svg{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .minimap-footer{
+      display:flex;
+      justify-content:space-between;
+      margin-top:14px;
+      font-size:9px;
+      letter-spacing:0.2em;
+      color:rgba(244,241,234,.55);
+    }
+  }
+
+  /* ============ DRIVING TIMELINE ============ */
+  .timeline{background:var(--ink);color:var(--paper);padding:80px 24px}
+  .timeline .section-num{color:var(--gold-bright)}
+  .timeline .section-title{color:var(--paper)}
+  .timeline .section-title em{color:var(--gold-bright)}
+  .timeline .section-deck{color:rgba(244,241,234,.7)}
+  .tl-list{margin-top:48px;display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(244,241,234,.15)}
+  .tl-row{display:grid;grid-template-columns:50px 1fr 80px;gap:14px;padding:16px 0;align-items:center;border-bottom:1px solid rgba(244,241,234,.08)}
+  .tl-day{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--gold-bright)}
+  .tl-place{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.15}
+  .tl-bar-wrap{position:relative;display:flex;align-items:center;gap:10px;grid-column:1 / -1;padding-top:6px}
+  .tl-bar{flex:1;height:2px;background:rgba(244,241,234,.1);position:relative}
+  .tl-bar-fill{position:absolute;left:0;top:0;bottom:0;background:var(--gold)}
+  .tl-drive{font-size:10px;color:rgba(244,241,234,.75);font-family:'JetBrains Mono',monospace;white-space:nowrap;text-align:right}
+
+  /* ============ TOTALS ============ */
+  .totals{background:var(--cream);padding:80px 24px;border-top:1px solid var(--rule)}
+  .tot-grid{display:grid;grid-template-columns:1fr;gap:40px}
+  .tot-table{width:100%;border-collapse:collapse}
+  .tot-table th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);padding:10px 6px 10px 0;border-bottom:1px solid var(--ink);font-weight:500}
+  .tot-table th:last-child{text-align:right;padding-right:0}
+  .tot-table td{padding:14px 6px 14px 0;border-bottom:1px solid var(--rule-light);font-size:14px;vertical-align:top}
+  .tot-table td:last-child{text-align:right;font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--moss);padding-right:0;white-space:nowrap}
+  .tot-table td.night{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ash);width:48px;padding-right:10px}
+  .tot-table tr.total-row td{border-top:2px solid var(--ink);border-bottom:none;padding-top:20px;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink)}
+  .tot-table tr.total-row td:last-child{font-size:28px;font-weight:500}
+  .tot-side{background:var(--ink);color:var(--paper);padding:32px 28px;align-self:start}
+  .tot-side h3{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,5vw,32px);font-weight:400;line-height:1.05;margin-bottom:22px;word-break:break-word}
+  .tot-side h3 em{color:var(--gold-bright);font-style:italic}
+  .tot-tip{font-size:13.5px;line-height:1.65;color:rgba(244,241,234,.85);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(244,241,234,.12)}
+  .tot-tip:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+  .tot-tip strong{color:var(--gold-bright);font-weight:500}
+
+  /* ============ FOOTER ============ */
+  .foot{background:var(--ink);color:rgba(244,241,234,.6);padding:48px 24px;text-align:center}
+  .foot-mark{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,5vw,32px);color:var(--paper);margin-bottom:8px}
+  .foot-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase}
+  .rune{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:14px;letter-spacing:0.4em;text-align:center;margin:0 auto;padding:8px 0;opacity:0.6}
+
+  /* ============ DESKTOP LAYOUT (>= 900px) ============ */
+  @media (min-width: 900px){
+    .hero{padding:40px 60px 60px}
+    .hero-bot{grid-template-columns:repeat(4,1fr)}
+    .stat{border-bottom:none}
+    .stat:last-child{border-right:none}
+    section{padding:120px 60px}
+    .chapter{padding:80px 60px}
+    .timeline{padding:120px 60px}
+    .totals{padding:120px 60px}
+    .foot{padding:60px}
+    .section-head{margin-bottom:80px}
+    .ov-grid{grid-template-columns:1fr 1.4fr;gap:80px}
+    .ov-image{aspect-ratio:3/4}
+    .chap-grid{grid-template-columns:120px 2.5fr 1fr;gap:36px;align-items:start}
+    .chap-rail{position:sticky;top:40px;align-self:start}
+    .chap-num{font-size:96px}
+    .chap-num em{font-size:36px}
+    .tl-row{grid-template-columns:80px 1fr 140px 120px;padding:20px 0}
+    .tl-bar-wrap{grid-column:3;padding-top:0}
+    .tot-grid{grid-template-columns:1.2fr 1fr;gap:80px}
+    .tot-side{padding:48px}
+  }
+
+  @media (min-width: 700px) and (max-width: 899px){
+    .hero-bot{grid-template-columns:repeat(4,1fr)}
+    .stat{border-bottom:none}
+  }
+
+  /* Mini-map SVG styling */
+  .mm-coast{fill:rgba(244,241,234,.06);stroke:rgba(244,241,234,.4);stroke-width:1;stroke-linejoin:round}
+  .mm-route{fill:none;stroke:var(--gold-bright);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;opacity:0.5}
+  .mm-route.active{stroke-dasharray:0;opacity:1;transition:stroke-dashoffset 0.8s cubic-bezier(.25,.46,.45,.94)}
+  .mm-pin{fill:rgba(244,241,234,.4);stroke:rgba(10,14,13,.6);stroke-width:0.8;transition:all .4s ease}
+  .mm-pin.visited{fill:var(--gold);stroke:var(--ink)}
+  .mm-pin.current{fill:var(--gold-bright);stroke:var(--paper);stroke-width:1.5;filter:drop-shadow(0 0 6px var(--gold-bright));r:5}
+  .mm-label{font-family:'JetBrains Mono',monospace;font-size:7px;fill:rgba(244,241,234,.5);pointer-events:none;text-anchor:middle;letter-spacing:0.1em}
+  .mm-label.current{fill:var(--gold-bright);font-weight:600}
+
+  /* ============ MOBILE POLISH (< 600px) ============ */
+  @media (max-width: 599px){
+    .hero{padding:24px 20px 36px;min-height:90vh}
+    .hero-top{font-size:8.5px;gap:10px}
+    .hero-mid{margin-top:40px;gap:14px}
+    h1.title{font-size:clamp(48px,15vw,72px)}
+    .lede{font-size:15px}
+    .hero-bot{grid-template-columns:repeat(2,1fr);gap:0;padding-top:18px;margin-top:32px}
+    .stat{padding:10px 12px 10px 0}
+    .stat-value{font-size:clamp(22px,6vw,32px)}
+
+    section{padding:48px 16px}
+    .chapter{padding:40px 16px}
+    .section-head{margin-bottom:36px}
+    .section-title{font-size:clamp(32px,9vw,48px)}
+
+    .chap-grid{gap:20px}
+    .chap-num-wrap{gap:10px}
+    .chap-num{font-size:56px}
+    .chap-num em{font-size:22px}
+    .chap-title{font-size:clamp(28px,7vw,36px);margin-bottom:16px}
+    .chap-lead{font-size:15px;margin-bottom:16px}
+    .chap-lead::first-letter{font-size:40px}
+    .chap-body{font-size:13.5px}
+
+    .itinerary{padding:14px;margin-top:20px}
+    .itin-row{grid-template-columns:58px 1fr;gap:10px;padding:8px 0}
+    .itin-time{font-size:9.5px}
+    .itin-desc{font-size:13px}
+
+    .chap-card{margin-top:8px}
+    .chap-card-body{padding:18px}
+    .hotel-name{font-size:clamp(20px,5vw,24px)}
+    .hotel-blurb{font-size:13px}
+    .hotel-stats{grid-template-columns:repeat(3,1fr);gap:6px;padding:10px 0}
+    .h-stat-l{font-size:8px}
+
+    .chap-gallery{gap:1px}
+    .chap-gallery-img{aspect-ratio:3/2}
+    .chap-gallery-img .img-cap{font-size:7.5px;padding:4px 8px}
+
+    .links{gap:6px}
+    .lnk{padding:12px 10px;font-size:9.5px;letter-spacing:0.14em;flex:1 1 120px}
+
+    .day-flow{padding:10px 14px;margin-top:14px}
+    .day-flow-text{font-size:12px}
+
+    .timeline{padding:48px 16px}
+    .tl-row{grid-template-columns:44px 1fr;gap:8px;padding:12px 0}
+    .tl-place{font-size:16px}
+    .tl-drive{font-size:9px;grid-column:1 / -1;text-align:left}
+    .tl-bar-wrap{grid-column:1 / -1}
+
+    .totals{padding:48px 16px}
+    .tot-table td{font-size:13px;padding:10px 4px 10px 0}
+    .tot-table td:last-child{font-size:16px}
+    .tot-table td.night{font-size:9px;width:36px}
+    .tot-side{padding:24px 20px;margin-top:8px}
+    .tot-side h3{font-size:clamp(22px,6vw,28px)}
+    .tot-tip{font-size:12.5px}
+
+    .foot{padding:36px 16px}
+
+    .ov-grid{gap:24px}
+    .ov-text h2{font-size:clamp(28px,8vw,40px);margin-bottom:20px}
+    .ov-para{font-size:15px}
+    .ov-para:first-of-type::first-letter{font-size:44px}
+    .ov-meta{grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;padding-top:20px}
+  }
+
+  /* ============ SMALL MOBILE (< 380px) ============ */
+  @media (max-width: 379px){
+    h1.title{font-size:42px}
+    .hero{padding:20px 16px 28px}
+    .chap-num{font-size:48px}
+    .chap-title{font-size:26px}
+    .lnk{font-size:9px;padding:10px 8px}
+    .hotel-stats{grid-template-columns:1fr 1fr 1fr}
+  }
+
+  /* ============ NEW v2 STYLES ============ */
+  /* status pills on hotel image */
+  .star-badge.not-booked{background:#9c2a2a;color:#fff;animation:pulse 2s ease-in-out infinite}
+  .star-badge.confirmed{background:#1f3a30;color:var(--gold-bright)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+  /* inline map link — wraps a place name */
+  a.map-link{
+    color:inherit;
+    text-decoration:underline;
+    text-decoration-color:rgba(31,58,48,.35);
+    text-decoration-thickness:1px;
+    text-underline-offset:3px;
+    transition:text-decoration-color .15s;
+  }
+  a.map-link:hover{text-decoration-color:var(--moss)}
+  a.map-link::after{
+    content:'↗';
+    display:inline-block;
+    font-size:.78em;
+    margin-left:2px;
+    opacity:.55;
+    vertical-align:super;
+    line-height:0;
+  }
+
+  /* hotel maps button row — secondary actions below booking links */
+  .map-actions{
+    display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;
+  }
+  .map-actions a{
+    flex:1 1 100%;
+    display:flex;align-items:center;justify-content:center;
+    padding:11px 14px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid var(--moss);color:var(--moss);
+    background:transparent;
+    transition:all .2s;
+  }
+  .map-actions a:hover{background:var(--moss);color:var(--paper)}
+
+  /* parking note inside each chapter */
+  .parking-note{
+    margin-top:18px;
+    padding:14px 18px;
+    background:rgba(201,164,74,.08);
+    border-left:2px solid var(--gold);
+    font-size:13px;line-height:1.6;color:var(--ink);
+  }
+  .parking-note .pn-title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .parking-note .pn-title::before{content:'P';display:inline-flex;
+    width:18px;height:18px;align-items:center;justify-content:center;
+    background:var(--gold);color:var(--ink);
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;
+    border-radius:2px;
+  }
+  .parking-note .pn-amt{font-family:'Cormorant Garamond',serif;color:var(--moss);font-weight:600}
+
+  /* top-of-page practical banner */
+  .practical{background:var(--ink);color:var(--paper);padding:64px 24px}
+  .practical .section-num{color:var(--gold-bright)}
+  .practical .section-title{color:var(--paper)}
+  .practical .section-title em{color:var(--gold-bright)}
+  .practical .section-deck{color:rgba(244,241,234,.7)}
+  .practical-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:36px}
+  .app-card{padding:24px;border:1px solid rgba(244,241,234,.15);background:rgba(244,241,234,.02)}
+  .app-card h4{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin-bottom:6px;color:var(--paper)}
+  .app-card .platform{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold-bright);text-transform:uppercase;margin-bottom:14px}
+  .app-card p{font-size:13.5px;line-height:1.6;color:rgba(244,241,234,.8);margin-bottom:12px}
+  .app-card .app-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .app-card .app-links a{
+    flex:1 1 100px;text-align:center;
+    padding:10px 12px;font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;letter-spacing:0.15em;text-transform:uppercase;
+    text-decoration:none;border:1px solid var(--gold-bright);color:var(--gold-bright);
+    transition:all .2s;
+  }
+  .app-card .app-links a:hover{background:var(--gold-bright);color:var(--ink)}
+  .fines-callout{
+    margin-top:24px;padding:18px 22px;
+    background:rgba(156,74,42,.18);
+    border-left:3px solid var(--rust);
+    font-size:13.5px;line-height:1.6;
+  }
+  .fines-callout strong{color:#e8a48a}
+
+  @media (min-width:760px){
+    .practical-grid{grid-template-columns:1fr 1fr;gap:32px}
+  }
+  @media (min-width:900px){
+    .practical{padding:90px 60px}
+    .map-actions a{flex:1 1 auto}
+  }
+
+  /* ensure links inside itinerary descriptions stay legible */
+  .itin-desc a.map-link{color:var(--ink)}
+
+  /* mobile-specific extra polish */
+  @media (max-width:599px){
+    .practical{padding:48px 16px}
+    .app-card{padding:20px}
+    .app-card h4{font-size:21px}
+    .parking-note{padding:12px 14px;font-size:12.5px}
+    .lnk{font-size:9.5px}
+  }
+
+  
+  /* ============ PIN GATE ============ */
+  #pin-gate{
+    position:fixed;inset:0;z-index:9999;
+    background:#0a0e0d;
+    color:#f4f1ea;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:32px;gap:32px;
+    font-family:'Cormorant Garamond',serif;
+  }
+  #pin-gate.hidden{display:none}
+  #pin-gate .pg-wordmark{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:0.4em;
+    color:#c9a44a;text-transform:uppercase;
+  }
+  #pin-gate .pg-title{
+    font-size:clamp(48px,12vw,84px);
+    font-weight:300;font-style:italic;
+    color:#f4f1ea;line-height:1;text-align:center;
+  }
+  #pin-gate .pg-title em{
+    font-style:normal;font-weight:500;color:#e0bd5f;
+  }
+  #pin-gate .pg-sub{
+    font-family:'Inter Tight',sans-serif;
+    font-size:14px;font-weight:300;
+    color:rgba(244,241,234,.6);text-align:center;max-width:320px;
+  }
+  #pin-gate .pg-pin{
+    display:flex;gap:14px;justify-content:center;
+  }
+  #pin-gate .pg-pin input{
+    width:54px;height:68px;
+    background:transparent;
+    border:1px solid rgba(244,241,234,.25);
+    color:#f4f1ea;
+    font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;
+    text-align:center;
+    border-radius:3px;
+    outline:none;
+    transition:border-color .15s, transform .15s;
+    caret-color:#e0bd5f;
+  }
+  #pin-gate .pg-pin input:focus{border-color:#e0bd5f}
+  #pin-gate.error .pg-pin input{
+    border-color:#9c4a2a;
+    animation:shake .42s ease-in-out;
+  }
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    20%,60%{transform:translateX(-8px)}
+    40%,80%{transform:translateX(8px)}
+  }
+  #pin-gate .pg-hint{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:0.18em;
+    color:rgba(244,241,234,.4);text-transform:uppercase;
+    min-height:14px;
+  }
+  #pin-gate.error .pg-hint{color:#e8a48a}
+  @media (max-width:380px){
+    #pin-gate .pg-pin input{width:46px;height:60px;font-size:28px}
+    #pin-gate .pg-pin{gap:10px}
+  }
+  html.pg-lock,body.pg-lock{overflow:hidden;height:100vh}
+
+  </style>
+</head>
+<body>
+
+<!-- PIN gate (client-side, hashed) -->
+<div id="pin-gate" role="dialog" aria-modal="true" aria-label="Enter PIN">
+  <div class="pg-wordmark">ÍSLAND · MMXXVI</div>
+  <h1 class="pg-title">A private<br><em>passage.</em></h1>
+  <p class="pg-sub">Enter your four-digit code to unlock the guide. The code is your departure date.</p>
+  <div class="pg-pin">
+    <input type="tel" inputmode="numeric" maxlength="1" autocomplete="off" data-i="0">
+    <input type="tel" inputmode="numeric" maxlength="1" autocomplete="off" data-i="1">
+    <input type="tel" inputmode="numeric" maxlength="1" autocomplete="off" data-i="2">
+    <input type="tel" inputmode="numeric" maxlength="1" autocomplete="off" data-i="3">
+  </div>
+  <div class="pg-hint" id="pg-hint">&nbsp;</div>
+</div>
+
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-top">
+    <div>ÍSLAND · RING ROAD</div>
+    <div class="right">64°08'N · 21°56'W<br>MAY · MMXXVI</div>
+  </div>
+
+  <div class="hero-mid">
+    <div class="eyebrow">A 12-Night Saga · Counterclockwise</div>
+    <h1 class="title">Ísland<br><em>awaits.</em></h1>
+    <p class="lede">Twelve nights at the edge of Europe, when the sun refuses to set and the wind carries the smell of the sea and of sulphur. Fire beneath ice. Basalt beneath moss. A road that loops the island once, returning you changed.</p>
+  </div>
+
+  <div class="hero-bot">
+    <div class="stat"><div class="stat-label">Depart</div><div class="stat-value">22 May</div><div class="stat-sub">FI 686 · 22:00</div></div>
+    <div class="stat"><div class="stat-label">Return</div><div class="stat-value">04 Jun</div><div class="stat-sub">FI 689 · 16:45</div></div>
+    <div class="stat"><div class="stat-label">Nights</div><div class="stat-value">12</div><div class="stat-sub">8 stops</div></div>
+    <div class="stat"><div class="stat-label">Distance</div><div class="stat-value">~2,600</div><div class="stat-sub">km driven</div></div>
+  </div>
+</header>
+
+<!-- ============ STICKY MINI-MAP ============ -->
+<aside class="minimap" id="minimap" aria-label="Trip route tracker">
+  <div class="minimap-title">· You are here ·</div>
+  <div class="minimap-current" id="mm-current" style="opacity: 1;"><span class="num">03</span>Akureyri</div>
+  <svg class="minimap-svg" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Iceland coastline — traced from real coordinates via lon/lat→SVG mapping -->
+    <path class="mm-coast" d="M 55.8,159.4 L 64.9,158.4 L 71.7,152.6 L 74,149.9 L 78.6,157.8 L 89.9,164.7 L 105.9,171 L 121.8,177.3 L 140,180.4 L 158.2,175.2 L 171.9,165.7 L 190.1,159.4 L 203.7,148.9 L 219.7,143.6 L 226.5,136.8 L 235.6,131.5 L 249.2,122.6 L 253.8,115.8 L 247,112.1 L 253.8,106.8 L 260.6,101.6 L 253.8,98.4 L 262.9,94.7 L 251.5,92.1 L 265.2,87.9 L 249.2,84.2 L 258.3,79 L 247,76.3 L 260.6,70 L 242.4,65.8 L 235.6,60.6 L 242.4,55.3 L 253.8,42.2 L 242.4,34.3 L 231,29 L 219.7,24.8 L 208.3,31.7 L 196.9,39.5 L 185.5,43.7 L 178.7,42.2 L 167.3,39.5 L 162.8,55.3 L 160.5,61.6 L 155.9,55.3 L 151.4,44.8 L 144.6,36.9 L 135.4,39.5 L 142.3,34.3 L 128.6,36.9 L 121.8,42.2 L 128.6,52.7 L 117.2,50.1 L 110.4,42.2 L 105.9,47.4 L 99,55.3 L 110.4,62.7 L 99,60.6 L 94.5,55.3 L 87.7,59.5 L 83.1,65.8 L 89.9,57.9 L 78.6,52.7 L 71.7,57.9 L 76.3,50.1 L 83.1,45.9 L 71.7,44.8 L 67.2,39.5 L 60.3,34.3 L 49,42.2 L 53.5,36.9 L 44.4,29 L 37.6,23.8 L 26.2,21.1 L 14.8,29 L 14.8,39.5 L 21.7,50.1 L 30.8,52.7 L 26.2,60.6 L 37.6,65.8 L 49,68.5 L 60.3,73.7 L 71.7,81.6 L 55.8,93.2 L 49,100 L 37.6,105.3 L 30.8,108.9 L 37.6,113.1 L 49,112.1 L 60.3,108.9 L 71.7,106.8 L 76.3,115.8 L 74,121.6 L 83.1,128.9 L 76.3,134.2 L 83.1,142.1 L 71.7,144.7 L 64.9,149.9 L 60.3,154.1 L 55.8,159.4 Z"></path>
+
+    <!-- Ring Road route — smooth bezier counterclockwise -->
+    <path id="mm-route" class="mm-route active" d="M 74,142.1 C 69.9,132 64.4,116 60.3,108.9 C 58.9,104 57.1,96 55.8,93.2 C 80,82 125,66 160.5,61.6 C 170,62 180,64 187.8,65.8 C 208,72 240,88 253.8,101.1 C 245,112 232,132 219.7,142.1 C 214,144 208,146 203.7,147.3 C 194,152 180,158 171.9,161.5 C 146,160 112,144 87.7,138.4 C 83,139 78,141 74,142.1" style="stroke-dasharray: 471.778; stroke-dashoffset: 294.861;"></path>
+
+    <!-- 8 stops at real geographic positions (lon/lat mapped) -->
+    <g id="mm-pins">
+      <circle class="mm-pin visited" data-stop="1" cx="74" cy="142.1" r="4"></circle><!-- Reykjavík -->
+      <circle class="mm-pin visited" data-stop="2" cx="60.3" cy="108.9" r="4"></circle><!-- Búðir -->
+      <circle class="mm-pin current" data-stop="3" cx="160.5" cy="61.6" r="4"></circle><!-- Akureyri -->
+      <circle class="mm-pin" data-stop="4" cx="187.8" cy="65.8" r="4"></circle><!-- Mývatn -->
+      <circle class="mm-pin" data-stop="5" cx="253.8" cy="101.1" r="4"></circle><!-- Eastfjords -->
+      <circle class="mm-pin" data-stop="6" cx="219.7" cy="142.1" r="4"></circle><!-- Jökulsárlón -->
+      <circle class="mm-pin" data-stop="7" cx="171.9" cy="161.5" r="4"></circle><!-- Magma -->
+      <circle class="mm-pin" data-stop="8" cx="87.7" cy="138.4" r="4"></circle><!-- ION / Þingvellir -->
+    </g>
+  </svg>
+  <div class="minimap-footer">
+    <span>REYKJAVÍK</span>
+    <span>12 NIGHTS</span>
+  </div>
+</aside>
+
+<!-- ============ PROLOGUE ============ -->
+<section class="overview">
+  <div class="container">
+    <div class="ov-grid">
+      <div class="ov-image" style="background-image:url(&#39;https://images.pexels.com/photos/20303780/pexels-photo-20303780.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"></div>
+      <div class="ov-text">
+        <div class="section-num">PROLOGUE</div>
+        <h2>A month the <em>sagas remember.</em></h2>
+        <p class="ov-para">Late May is when Iceland exhales. The puffins return to Borgarfjörður Eystri. The humpbacks come up to feed in Skjálfandi Bay. Snow pulls back from the lowland roads and the interior wakes slowly, cautiously, the way a bear might. For three weeks between the last of the winter closures and the full arrival of summer, the island is briefly, almost impossibly, yours.</p>
+        <p class="ov-para">This route loops the Ring Road counterclockwise, weighted toward the volcanic northeast — where Lake Mývatn steams beneath pseudocraters and the earth is still trying to decide whether to cool — and the glacial southeast, where icebergs calve into a tidal lagoon and wash back onto a beach of black sand. Two nights at Mývatn. Two in the Eastfjords. Two at the glacier. The sunsets last four hours. The light does not go out.</p>
+        <p class="ov-para">Around those anchors, smaller rooms unfold: a black wooden church on a lava peninsula, a rainbow-painted art village in a fjord, a lava-field cabin under the midnight sun, a concrete hotel at the edge of the continental rift. Twelve nights. Not a list. A passage.</p>
+
+        <div class="ov-meta">
+          <div class="meta-item"><div class="meta-label">Direction</div><div class="meta-val">Counterclockwise</div></div>
+          <div class="meta-item"><div class="meta-label">Daylight</div><div class="meta-val">~21 hrs</div></div>
+          <div class="meta-item"><div class="meta-label">Anchors</div><div class="meta-val">2N Mývatn · 2N East</div></div>
+          <div class="meta-item"><div class="meta-label">Vehicle</div><div class="meta-val">4WD essential</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rune">· · · · ·</div>
+
+<!-- ============ CHAPTERS ============ -->
+
+
+<!-- ============ PRACTICAL · PARKING & APPS ============ -->
+<section class="practical">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">CHAPTER 0 · PRACTICAL</div>
+      <h2 class="section-title">Two apps, <em>and you're set.</em></h2>
+      <p class="section-deck">Iceland charges for parking at most tourist sites and in central Reykjavík. Two apps handle 95% of it. Download both before you board, register your rental plate, and add a card.</p>
+    </div>
+
+    <div class="practical-grid">
+      <div class="app-card">
+        <div class="platform">Tourist sites · 45+ locations</div>
+        <h4>Parka</h4>
+        <p>The default for nature reserves, waterfalls, canyons, and most tourist car parks outside Reykjavík. Tickets are typically <strong>1000 ISK (~$7)</strong> and valid until midnight at most sites. Register your rental plate once; pay in 10 seconds per stop.</p>
+        <div class="app-links">
+          <a href="https://apps.apple.com/is/app/parka-pay-parking/id1573731968" target="_blank" rel="noopener">iOS App Store →</a>
+          <a href="https://play.google.com/store/apps/details?id=is.parka.app" target="_blank" rel="noopener">Google Play →</a>
+          <a href="https://parka.app/" target="_blank" rel="noopener">parka.app →</a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="platform">Towns · Reykjavík · Akureyri</div>
+        <h4>EasyPark</h4>
+        <p>Pay-by-minute for street parking in Reykjavík (zones P1–P4) and other towns. Best for short stops where you'd rather not overestimate. Reykjavík P1 is 630 ISK/hr; P3/P4 only 230 ISK/hr.</p>
+        <div class="app-links">
+          <a href="https://apps.apple.com/is/app/easypark-parking-charging/id373229988" target="_blank" rel="noopener">iOS App Store →</a>
+          <a href="https://play.google.com/store/apps/details?id=net.easypark.android" target="_blank" rel="noopener">Google Play →</a>
+          <a href="https://www.easypark.com/en-is" target="_blank" rel="noopener">easypark.com →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fines-callout">
+      <strong>Don't ignore a ticket.</strong> A standard meter violation is 4,500 ISK (~$37), discounted to 3,400 ISK if you pay immediately. Illegal parking is 10,000 ISK. Blue Car Rental will pass on any unpaid fine plus a ~2,000 ISK handling fee, and they will charge your card. Cheaper to spend 30 seconds in the app.
+    </div>
+  </div>
+</section>
+
+<div class="rune">· · · · ·</div>
+
+<!-- N1 Reykjavik -->
+<article class="chapter" data-stop="1">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Night One</div><div class="chap-num">01</div></div></div>
+      <div class="chap-dates">SAT 23 MAY<span class="arrow">→</span>SUN 24 MAY<br><span class="nights">one night</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">REYKJAVÍK · ARRIVAL</div>
+      <h3 class="chap-title">The saga, <em>beginning.</em></h3>
+      <p class="chap-lead">Wheels touch asphalt at Keflavík at the hour when the day is already thinking about evening. Out the window: black lava fields, an airport the size of a regional terminal, an island that will not get dark tonight. By noon the rental 4WD is loaded; by mid-afternoon, the city.</p>
+      <p class="chap-body">Reykjavík is small enough to walk in a single afternoon — pastel row houses, a concert hall that looks like broken glass, a lutheran cathedral built to resemble basalt columns. But today is not a walking day. Today is a <strong>check in, breathe out, remember you are here</strong> day.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 1 · Itinerary</div>
+        <div class="itin-row"><div class="itin-time">09:25</div><div class="itin-desc">Land KEF. Clear customs (~45 min). Collect rental.</div></div>
+        <div class="itin-row"><div class="itin-time">11:30</div><div class="itin-desc"><strong>Optional:</strong> Blue Lagoon soak en route (15 min from airport, pre-book 12:00 slot).</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Check in. Unpack. Horizontal for an hour.</div></div>
+        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc">Walk Laugavegur. Coffee at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1456,-21.9295" target="_blank" rel="noopener">Reykjavík Roasters</a></strong>. Peek into Hallgrímskirkja.</div></div>
+        <div class="itin-row"><div class="itin-time">19:30</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1483,-21.9407" target="_blank" rel="noopener">Grillmarkaðurinn</a></strong> or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1502,-21.9485" target="_blank" rel="noopener">Matur og Drykkur</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">22:00</div><div class="itin-desc">Last drink at the hotel bar. Watch the harbour from your room. The sky still glows.</div></div>
+      </div>
+      <div class="parking-note"><div class="pn-title">Reykjavík parking</div><div>Exeter Hotel is in central Reykjavík — paid zone <span class="pn-amt">P1</span>, 630 ISK/hr (~$5), max 3 hrs, 09:00–21:00 weekdays. Hotel guest parking is on-site; for walks around town, pay via <strong>Parka</strong> or <strong>EasyPark</strong>. Free overnight and Sundays after 21:00.</div></div><div class="chap-tags"><span class="tag">Arrival</span><span class="tag">Blue Lagoon</span><span class="tag">Hallgrímskirkja</span><span class="tag">First dinner</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/17391036/pexels-photo-17391036.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/31670242/pexels-photo-31670242.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Laugavegur</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/27182278/pexels-photo-27182278.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Hallgrímskirkja</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">Exeter Hotel</div>
+        <div class="hotel-loc">Tryggvagata 12 · 101 Reykjavík</div>
+        <p class="hotel-blurb">Keahotels property on the old harbour. Deluxe rooms with harbour views, breakfast included, and a central location minutes from Laugavegur and Harpa concert hall.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">2</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$480</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.7★</div></div></div>
+        <div class="links"><a class="lnk" href="https://www.keahotels.is/en/hotels/exeter-hotel" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/exeter-by-keahotels.html?checkin=2026-05-23&amp;checkout=2026-05-24&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.1486,-21.9430" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- N2 Budir -->
+<article class="chapter" data-stop="2">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Night Two</div><div class="chap-num">02<em>★</em></div></div></div>
+      <div class="chap-dates">SUN 24 MAY<span class="arrow">→</span>MON 25 MAY<br><span class="nights">one night</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">SNÆFELLSNES · BÚÐIR</div>
+      <h3 class="chap-title">A black church <em>on a lava field.</em></h3>
+      <p class="chap-lead">North out of the city, around a fjord that once held a US naval base, past a tunnel cut beneath the sea, and onto a peninsula Jules Verne set Journey to the Center of the Earth on. At the end of the road, a sweep of moss-covered lava ending at the Atlantic — and alone upon it, the seventeenth-century church of Búðir. Painted black. Always has been.</p>
+      <p class="chap-body">The hotel beside it is the <strong>only dinner</strong> for forty kilometres in any direction. Book your table when you check in. Then walk the lava path to the church while the sun is still high — this far north in May, "sunset" happens at 22:00 and lingers.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 2 · Itinerary</div>
+        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Breakfast at the hotel. Depart Reykjavík.</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.7022,-20.9794" target="_blank" rel="noopener">Hraunfossar</a></strong> waterfalls — blue water bleeding sideways out of a lava field. 20 min stop.</div></div>
+        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc">Lunch at the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.5408,-21.9203" target="_blank" rel="noopener">Settlement Center café</a></strong>, Borgarnes.</div></div>
+        <div class="itin-row"><div class="itin-time">15:30</div><div class="itin-desc">Arrive Búðir. Check in. Reserve dinner.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Walk the lava path to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.8221,-23.3819" target="_blank" rel="noopener">Búðakirkja</a></strong> (black church).</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at the hotel — small menu, mostly lamb and local fish.</div></div>
+        <div class="itin-row"><div class="itin-time">22:00</div><div class="itin-desc">Last light over the Atlantic. Bring a coat.</div></div>
+      </div>
+      <div class="parking-note"><div class="pn-title">Snæfellsnes parking</div><div>Hotel Búðir parking is free. Kirkjufell viewpoint and Snæfellsjökull trailheads are free. Hraunfossar parking is free. No paid lots on the peninsula today.</div></div><div class="chap-tags"><span class="tag">Black church</span><span class="tag">Hraunfossar</span><span class="tag">Lava field</span><span class="tag">Last light 22:00</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/18138566/pexels-photo-18138566.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/5496430/pexels-photo-5496430.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Búðakirkja</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/2454681/pexels-photo-2454681.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Kirkjufell</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">Hotel Búðir</div>
+        <div class="hotel-loc">356 Snæfellsbær · Western Region</div>
+        <p class="hotel-blurb">28 rooms on a remote lava peninsula next to an iconic 17th-century church. Romantic, photogenic, silent to the point of ringing. Breakfast not included — 2,800 ISK (~$19) per person.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">2</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$340</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.6★</div></div></div>
+        <div class="links"><a class="lnk" href="https://www.budir.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/budir.html?checkin=2026-05-24&amp;checkout=2026-05-25&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.8222,-23.3819" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Reykjavík → Búðir · <strong>2.5 hrs · 175 km</strong></div></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- N3 Akureyri -->
+<article class="chapter" data-stop="3">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Night Three</div><div class="chap-num">03</div></div></div>
+      <div class="chap-dates">MON 25 MAY<span class="arrow">→</span>TUE 26 MAY<br><span class="nights">one night</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">NORTH · AKUREYRI</div>
+      <h3 class="chap-title">The <em>long</em> north.</h3>
+      <p class="chap-lead">This is the day you cross. Five hours in the driver's seat, tracing the northern coast from west to east. Iceland narrows here. The Atlantic pressing from one side, uninhabited highlands from the other. You will pass more sheep than cars.</p>
+      <p class="chap-body">Break the drive twice. First at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6058,-19.5083" target="_blank" rel="noopener">Glaumbær</a></strong> — a turf-roofed farm from the saga era. Then at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6066,-20.6373" target="_blank" rel="noopener">Hvítserkur</a></strong>, a basalt sea stack local tradition says is a petrified troll, caught out by the sunrise. Arrive Akureyri — unofficial capital of the north, population 19,000 — with traffic lights shaped like hearts.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 3 · Itinerary</div>
+        <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Early breakfast. Today needs momentum.</div></div>
+        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Depart Búðir. Route 54 north, then Route 1 east.</div></div>
+        <div class="itin-row"><div class="itin-time">11:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6066,-20.6373" target="_blank" rel="noopener">Hvítserkur</a></strong> sea stack — 10 min walk to the viewpoint.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6612,-20.2864" target="_blank" rel="noopener">Ólafshús</a></strong> in Blönduós.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6058,-19.5083" target="_blank" rel="noopener">Glaumbær</a></strong> turf farm museum. 45 min.</div></div>
+        <div class="itin-row"><div class="itin-time">18:00</div><div class="itin-desc">Arrive Akureyri. Walk to Akureyrarkirkja.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6812,-18.0907" target="_blank" rel="noopener">Strikið</a></strong> (fjord views, lamb) or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6794,-18.0867" target="_blank" rel="noopener">RUB23</a></strong> (excellent sushi).</div></div>
+      </div>
+      <div class="parking-note"><div class="pn-title">Akureyri parking</div><div>Akureyri uses a free disc system in the centre — write your arrival time on the cardboard disc the rental car comes with and place it on the dashboard. <strong>1-hour max</strong> in most spots. Hvítserkur and Glaumbær parking are free. Berjaya hotel has its own lot.</div></div><div class="chap-tags"><span class="tag">Long drive</span><span class="tag">Turf farm</span><span class="tag">Petrified troll</span><span class="tag">Fjord town</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/32636533/pexels-photo-32636533.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/16251253/pexels-photo-16251253.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Goðafoss en route</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/10227758/pexels-photo-10227758.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Akureyrarkirkja</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">Berjaya Iceland Hotels</div>
+        <div class="hotel-loc">Skipagata 4 · 600 Akureyri</div>
+        <p class="hotel-blurb">Modern 4-star hotel with mountain views over Eyjafjörður. 24-hour front desk (perfect for late arrivals), on-site restaurant, and a central location steps from the harbour and heart-shaped traffic lights.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">3</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$207</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.2★</div></div></div>
+        <div class="links"><a class="lnk" href="https://www.berjayaiceland.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/kea-akureyri.html?checkin=2026-05-25&amp;checkout=2026-05-26&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=65.6810,-18.0894" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Búðir → Akureyri · <strong>5 hrs · 380 km</strong> · longest transit</div></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- N4-6 Myvatn -->
+<article class="chapter" data-stop="4">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Nights Four &amp; Five</div><div class="chap-num">04<em>★</em></div></div></div>
+      <div class="chap-dates">TUE 26 MAY<span class="arrow">→</span>THU 28 MAY<br><span class="nights">two nights</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">NORTHEAST · LAKE MÝVATN</div>
+      <h3 class="chap-title">Where the earth <em>is still smoking.</em></h3>
+      <p class="chap-lead">Mývatn is not a lake so much as a wound the earth has mostly healed from. Shallow water studded with pseudocraters. Sulphur fields hissing and hot to the touch. Mud pots clicking like old radiators. A lava castle you can walk through. The densest concentration of must-see geology anywhere in Iceland — and worth every hour of these two nights.</p>
+      <p class="chap-body">Late May means the sun dips below the horizon for about ninety minutes at three in the morning, and barely that. The midges — the namesake of the lake, <em>mý</em> + <em>vatn</em> — have just begun to return. Bring a head net.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 4 · Arrival &amp; Earth Lagoon</div>
+        <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Leave Akureyri. Route 1 east.</div></div>
+        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6829,-17.5500" target="_blank" rel="noopener">Goðafoss</a></strong> — Waterfall of the Gods. Park, walk 5 min, spend 30.</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Arrive Mývatn. Check in at Fosshotel. Settle in — two nights of fire and earth.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5921,-16.9275" target="_blank" rel="noopener">Vogafjós Cowshed Café</a></strong> — watch cows being milked through the glass.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5916,-16.9111" target="_blank" rel="noopener">Dimmuborgir</a></strong> lava labyrinth — towering basalt pillars and arches. 1.5 hrs.</div></div>
+        <div class="itin-row"><div class="itin-time">16:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5713,-17.0290" target="_blank" rel="noopener">Skútustaðagígar</a></strong> pseudocraters along the lakeshore. Easy walking.</div></div>
+        <div class="itin-row"><div class="itin-time">18:00</div><div class="itin-desc">Dinner at the hotel — Nordic cuisine with lake views.</div></div>
+        <div class="itin-row"><div class="itin-time">21:00</div><div class="itin-desc">Evening soak at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6300,-16.8478" target="_blank" rel="noopener">Earth Lagoon</a></strong> (Mývatn Nature Baths) — milky-blue geothermal water, steam caves, midnight sun.</div></div>
+      </div>
+      <div class="itinerary" style="margin-top:14px">
+        <div class="itin-title">Day 5 · Húsavík whales &amp; the volcanic loop</div>
+        <div class="itin-row"><div class="itin-time">07:30</div><div class="itin-desc">Early breakfast. Big day — pack it tight.</div></div>
+        <div class="itin-row"><div class="itin-time">08:30</div><div class="itin-desc">Drive north to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0450,-17.3380" target="_blank" rel="noopener">Húsavík</a></strong> (50 min).</div></div>
+        <div class="itin-row"><div class="itin-time">10:00</div><div class="itin-desc"><strong>Whale-watching tour</strong> with North Sailing — 3 hrs on an oak schooner. Book ahead.</div></div>
+        <div class="itin-row"><div class="itin-time">13:30</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0466,-17.3398" target="_blank" rel="noopener">Naustið</a></strong> on the harbour — fresh seafood.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0481,-17.3329" target="_blank" rel="noopener">GeoSea Geothermal Baths</a></strong> — infinity pools on the cliff edge. 1 hr soak.</div></div>
+        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc">Drive back via Route 87. Stop at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6406,-16.8082" target="_blank" rel="noopener">Hverir</a></strong> — bubbling mud pots and fumaroles.</div></div>
+        <div class="itin-row"><div class="itin-time">17:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.7167,-16.7572" target="_blank" rel="noopener">Krafla caldera</a></strong> + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.7174,-16.7572" target="_blank" rel="noopener">Víti crater</a></strong> — milky-blue volcanic lake.</div></div>
+        <div class="itin-row"><div class="itin-time">18:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6263,-16.8825" target="_blank" rel="noopener">Grjótagjá</a></strong> hot cave — the Game of Thrones scene.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Final Mývatn dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5921,-16.9275" target="_blank" rel="noopener">Vogafjós Cowshed Café</a></strong>. Earth Lagoon encore.</div></div>
+      </div>
+      <div class="day-flow" style="margin-top:14px"><div class="day-flow-title">Dettifoss option</div><div class="day-flow-text"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.8146,-16.3850" target="_blank" rel="noopener">Dettifoss</a></strong> (Europe's most powerful waterfall) is 45 min east on Route 862. If weather is poor for whale watching, swap the Húsavík morning for Dettifoss + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0150,-16.5050" target="_blank" rel="noopener">Ásbyrgi canyon</a></strong> instead.</div></div>
+      <div class="parking-note"><div class="pn-title">Mývatn region</div><div>Goðafoss <span class="pn-amt">1000 ISK</span> via <strong>Parka</strong>. Dimmuborgir <span class="pn-amt">free</span>. Dettifoss west side <span class="pn-amt">750 ISK</span> via Parka. Earth Lagoon (Mývatn Nature Baths) — parking free with entry. Hverir, Krafla, Grjótagjá: free. Hotel has its own lot.</div></div><div class="chap-tags"><span class="tag">Goðafoss</span><span class="tag">Húsavík whales</span><span class="tag">Dettifoss</span><span class="tag">Ásbyrgi</span><span class="tag">Krafla</span><span class="tag">Hverir</span><span class="tag">GoT cave</span><span class="tag">GeoSea baths</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/10582416/pexels-photo-10582416.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/32577911/pexels-photo-32577911.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Námaskarð fields</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/1875480/pexels-photo-1875480.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Dettifoss power</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">Fosshotel Mývatn</div>
+        <div class="hotel-loc">Grímsstaðir · 660 Mývatn</div>
+        <p class="hotel-blurb">92 rooms overlooking Lake Mývatn. Nordic fine-dining restaurant with panoramic views, sauna, and terrace. Earth Lagoon geothermal baths are a 5-minute drive — your evening ritual for two nights.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">4</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$413</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$826</div></div></div>
+        <div class="links"><a class="lnk" href="https://www.islandshotel.is/hotels-in-iceland/fosshotel-myvatn/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/fosshotel-myvatn.html?checkin=2026-05-26&amp;checkout=2026-05-28&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=65.5811,-16.9794" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="day-flow"><div class="day-flow-title">Drive to Mývatn</div><div class="day-flow-text">Akureyri → Mývatn · <strong>1 hr · 100 km</strong> via Goðafoss</div></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- N7 East Fjords -->
+<article class="chapter" data-stop="5">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Nights Six &amp; Seven</div><div class="chap-num">06</div></div></div>
+      <div class="chap-dates">THU 28 MAY<span class="arrow">→</span>SAT 30 MAY<br><span class="nights">two nights</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">EAST FJORDS · FÁSKRÚÐSFJÖRÐUR</div>
+      <h3 class="chap-title">Basalt, solitude, <em>and a rainbow road.</em></h3>
+      <p class="chap-lead">East of Mývatn the road climbs through a pass of black gravel and dropping snow. On the far side, fjords — long fingers of Atlantic cut deep into the basalt — and Iceland's least-visited region. Two nights here is not a compromise; it is a reward. The part of Iceland most travellers rush through and later wish they hadn't.</p>
+      <p class="chap-body">On the way in, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.1500,-15.3289" target="_blank" rel="noopener">Stuðlagil canyon</a></strong> — hexagonal basalt columns lining a glacier-fed river the colour of a swimming pool. On day two, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2628,-14.0103" target="_blank" rel="noopener">Seyðisfjörður</a></strong> — a rainbow-painted village in a fjord so steep the clouds sit below the ridgeline. Between them, the quietest roads on the Ring, fishing harbours nobody else visits, and twenty hours of daylight with nothing to do but look.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 6 · Stuðlagil &amp; arrival</div>
+        <div class="itin-row"><div class="itin-time">08:30</div><div class="itin-desc">Early start from Mývatn. Route 1 east through the highland pass.</div></div>
+        <div class="itin-row"><div class="itin-time">10:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.1500,-15.3289" target="_blank" rel="noopener">Stuðlagil canyon</a></strong> — east viewpoint for the full basalt-column view. Morning light is best. Allow 2 hrs.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch: <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2627,-14.3949" target="_blank" rel="noopener">Café Nielsen</a></strong>, Egilsstaðir.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc">Drive south through the fjords. Scenic coast road — take it slow.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Arrive Fáskrúðsfjörður. Check in. Walk the harbour at golden hour.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.9319,-13.7833" target="_blank" rel="noopener">L'Abri</a></strong> — French-Icelandic fusion in a former French hospital.</div></div>
+      </div>
+      <div class="itinerary" style="margin-top:14px">
+        <div class="itin-title">Day 7 · Seyðisfjörður &amp; the fjord road</div>
+        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Breakfast. Drive north to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2628,-14.0103" target="_blank" rel="noopener">Seyðisfjörður</a></strong> (1.5 hrs via Egilsstaðir).</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Walk the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2625,-14.0091" target="_blank" rel="noopener">rainbow road</a></strong>. Browse galleries and the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2620,-14.0117" target="_blank" rel="noopener">Skaftfell Center for Visual Art</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2607,-14.0091" target="_blank" rel="noopener">Nordic Restaurant</a></strong> — fjord-side, refined Icelandic-Nordic menu.</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc"><strong>Optional:</strong> Detour to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5267,-13.7464" target="_blank" rel="noopener">Borgarfjörður Eystri</a></strong> for puffins at Hafnarhólmi (90 min each way).</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Return to Fáskrúðsfjörður via the coast. Stop at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.0322,-14.2122" target="_blank" rel="noopener">Reyðarfjörður</a></strong> WWII museum.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Final Eastfjords dinner. The sky won't set. Neither will you.</div></div>
+      </div>
+      <div class="parking-note"><div class="pn-title">Eastfjords parking</div><div>Stuðlagil canyon east-side lot <span class="pn-amt">750 ISK</span> via Parka. Seyðisfjörður street parking free. Borgarfjörður Eystri puffin colony (Hafnarhólmi) free. Fáskrúðsfjörður hotel has on-site parking.</div></div><div class="chap-tags"><span class="tag">Stuðlagil</span><span class="tag">Seyðisfjörður</span><span class="tag">Rainbow road</span><span class="tag">Puffins</span><span class="tag">Fjord road</span><span class="tag">Art village</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/5411457/pexels-photo-5411457.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge not-booked">Not booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/19433891/pexels-photo-19433891.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Stuðlagil canyon</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/20126774/pexels-photo-20126774.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Seyðisfjörður</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">Fosshotel Eastfjords</div>
+        <div class="hotel-loc">Hafnargata 11–14 · 750 Fáskrúðsfjörður</div>
+        <p class="hotel-blurb">Restored French Hospital from 1903 with a modern wing, directly on the fjord. Two nights here gives you time to explore Seyðisfjörður's galleries and photograph Stuðlagil properly.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">3</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$300</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$600</div></div></div>
+        <div class="links"><a class="lnk" href="https://www.islandshotel.is/hotels-in-iceland/fosshotel-eastfjords/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/fosshotel-east-fjords.html?checkin=2026-05-28&amp;checkout=2026-05-30&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.9351,-13.7833" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="day-flow"><div class="day-flow-title">Drive to Eastfjords</div><div class="day-flow-text">Mývatn → Fáskrúðsfjörður · <strong>3.5 hrs · 270 km</strong></div></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- N8-9 Jokulsarlon -->
+<article class="chapter" data-stop="6">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Nights Eight &amp; Nine</div><div class="chap-num">08<em>★</em></div></div></div>
+      <div class="chap-dates">SAT 30 MAY<span class="arrow">→</span>MON 1 JUN<br><span class="nights">two nights</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">SOUTHEAST · VATNAJÖKULL</div>
+      <h3 class="chap-title">Ice meeting <em>black sand.</em></h3>
+      <p class="chap-lead">This is why you came. Vatnajökull — the largest glacier in Europe — sends frozen tongues down to the coast, where they calve into a tidal lagoon called Jökulsárlón. The icebergs drift. Seals ride them. At the far end the lagoon empties under a narrow bridge and spits the ice onto a beach made of black volcanic sand. The contrast does not look real, even when you are standing on it.</p>
+      <p class="chap-body">Two nights close to the lagoon itself. You will need every hour.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 8 · Arrival &amp; Zodiac</div>
+        <div class="itin-row"><div class="itin-time">08:30</div><div class="itin-desc">Leave Fáskrúðsfjörður. Coast road south.</div></div>
+        <div class="itin-row"><div class="itin-time">12:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.6586,-14.2811" target="_blank" rel="noopener">Hótel Framtíð</a></strong>, Djúpivogur.</div></div>
+        <div class="itin-row"><div class="itin-time">15:00</div><div class="itin-desc">Arrive Hotel Jökulsárlón. Check in.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0480,-16.1789" target="_blank" rel="noopener">Zodiac boat tour</a></strong> on the lagoon — 1 hr, suit provided. Book at icelagoon.is for the late slot.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at the hotel.</div></div>
+        <div class="itin-row"><div class="itin-time">22:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0432,-16.1839" target="_blank" rel="noopener">Diamond Beach</a></strong> at last light — icebergs washed onto black sand.</div></div>
+      </div>
+      <div class="itinerary" style="margin-top:14px">
+        <div class="itin-title">Day 9 · Skaftafell</div>
+        <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Early breakfast. Drive 45 min west to Skaftafell National Park.</div></div>
+        <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.9961,-16.8336" target="_blank" rel="noopener">Guided glacier walk</a></strong> on Falljökull. 3 hrs, crampons.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at the Skaftafell Visitor Centre.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc">Hike to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0271,-16.9756" target="_blank" rel="noopener">Svartifoss</a></strong> — waterfall framed by hexagonal basalt. 90 min round trip.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0117,-16.3717" target="_blank" rel="noopener">Fjallsárlón</a></strong> — smaller, quieter glacier lagoon. No tour buses.</div></div>
+        <div class="itin-row"><div class="itin-time">19:30</div><div class="itin-desc">Back to hotel. Long dinner. Sleep deeply.</div></div>
+      </div>
+      <div class="parking-note"><div class="pn-title">Vatnajökull region</div><div>Jökulsárlón <span class="pn-amt">1000 ISK</span> via Parka — valid until midnight, in/out OK. Diamond Beach uses the same ticket. Skaftafell <span class="pn-amt">1040 ISK</span> via Parka — <strong>50% discount</strong> if you also park at Jökulsárlón on the same day. Fjallsárlón free if parking at the visitor centre.</div></div><div class="chap-tags"><span class="tag">Zodiac</span><span class="tag">Diamond Beach</span><span class="tag">Glacier walk</span><span class="tag">Svartifoss</span><span class="tag">Fjallsárlón</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/20582185/pexels-photo-20582185.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/4087258/pexels-photo-4087258.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Diamond Beach</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/29213491/pexels-photo-29213491.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Glacier lagoon</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">Hótel Jökulsárlón</div>
+        <div class="hotel-loc">Reynivellir III · 781 Hornafjörður</div>
+        <p class="hotel-blurb">Modern glass-front hotel 10 min from the lagoon itself. Closest serious accommodation to the icebergs.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">3</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$535</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$1,070</div></div></div>
+        <div class="links"><a class="lnk" href="https://hoteljokulsarlon.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/jokulsarlon.html?checkin=2026-05-30&amp;checkout=2026-06-01&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.2683,-15.4878" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="day-flow"><div class="day-flow-title">Drive to glacier region</div><div class="day-flow-text">Fáskrúðsfjörður → Reynivellir · <strong>3.5 hrs · 270 km</strong></div></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- N10 Magma -->
+<article class="chapter" data-stop="7">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Night Ten</div><div class="chap-num">10</div></div></div>
+      <div class="chap-dates">MON 1 JUN<span class="arrow">→</span>TUE 2 JUN<br><span class="nights">one night</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">SOUTH · KIRKJUBÆJARKLAUSTUR</div>
+      <h3 class="chap-title">Cabins on a <em>moss-covered lava field.</em></h3>
+      <p class="chap-lead">A two-hour drive west brings you to Kirkjubæjarklaustur — a name so long Icelanders shorten it to "Klaustur" — where moss has crept for nine centuries over a lava flow the size of a small country, and where twenty-five modern cabins have been set into it like stones on a board. Magma. No tour buses stop here. The restaurant is quietly excellent. The hot tub faces the moss.</p>
+      <p class="chap-body">Stop en route at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7708,-18.1717" target="_blank" rel="noopener">Fjaðrárgljúfur</a></strong> — a hundred-metre-deep canyon carved by a glacial river. A viewing platform. Twenty minutes. You will not forget it.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 10 · Itinerary</div>
+        <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc">Breakfast at Hótel Jökulsárlón. Slow morning.</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Depart west on Route 1.</div></div>
+        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7708,-18.1717" target="_blank" rel="noopener">Fjaðrárgljúfur canyon</a></strong> — walk the rim trail, 45 min.</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7903,-18.0653" target="_blank" rel="noopener">Systrakaffi</a></strong> in Kirkjubæjarklaustur.</div></div>
+        <div class="itin-row"><div class="itin-time">15:00</div><div class="itin-desc">Check into Magma. Walk the lava field. Hot tub.</div></div>
+        <div class="itin-row"><div class="itin-time">17:30</div><div class="itin-desc"><strong>Optional:</strong> drive to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7864,-17.9961" target="_blank" rel="noopener">Dverghamrar</a></strong> basalt columns or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7889,-18.0581" target="_blank" rel="noopener">Systrafoss</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at the hotel — small menu, local produce, genuinely good.</div></div>
+      </div>
+      <div class="parking-note"><div class="pn-title">South parking</div><div>Fjaðrárgljúfur canyon <span class="pn-amt">1000 ISK</span> via Parka — valid until midnight. Magma Hotel has free on-site parking. Dverghamrar and Systrafoss are free.</div></div><div class="chap-tags"><span class="tag">Fjaðrárgljúfur</span><span class="tag">Lava cabins</span><span class="tag">Hot tub</span><span class="tag">Quiet night</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/20582024/pexels-photo-20582024.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/9532584/pexels-photo-9532584.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Fjaðrárgljúfur</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/4573155/pexels-photo-4573155.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Lava moss fields</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">Magma Hotel</div>
+        <div class="hotel-loc">Brekkur · 880 Kirkjubæjarklaustur</div>
+        <p class="hotel-blurb">Twenty-five cabin-style rooms scattered across a private lava field. Modern Scandinavian, in-floor heating, private terraces. Doesn't do tour groups on principle.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">1</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$700</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.7★</div></div></div>
+        <div class="links"><a class="lnk" href="https://www.magmahotel.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/magma.html?checkin=2026-06-01&amp;checkout=2026-06-02&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=63.7733,-18.0089" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Jökulsárlón → Magma · <strong>2 hrs · 175 km</strong> via the canyon</div></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- N11-12 ION -->
+<article class="chapter" data-stop="8">
+  <div class="chap-grid">
+    <aside class="chap-rail">
+      <div class="chap-num-wrap"><div><div class="chap-night">Nights Eleven &amp; Twelve</div><div class="chap-num">11<em>★</em></div></div></div>
+      <div class="chap-dates">TUE 2 JUN<span class="arrow">→</span>THU 4 JUN<br><span class="nights">two nights</span></div>
+    </aside>
+    <div class="chap-text">
+      <div class="chap-place">GOLDEN CIRCLE · NESJAVELLIR</div>
+      <h3 class="chap-title">Concrete, glass, <em>and steam.</em></h3>
+      <p class="chap-lead">The longest, most beautiful driving day — and the one that ends at the architectural exclamation point of the whole trip. You will hit every iconic south-coast waterfall before lunch. You will stand where the Eurasian and North American plates pull apart. You will finish in a concrete cube on stilts at the edge of a rift valley lake, with a Northern Lights bar and a geothermal pool.</p>
+      <p class="chap-body">Tomorrow you fly home. Tonight there is no packing. Only soaking.</p>
+      <div class="itinerary">
+        <div class="itin-title">Day 11 · South coast highlights reel</div>
+        <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Early breakfast at Magma. Long day.</div></div>
+        <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.4061,-19.0436" target="_blank" rel="noopener">Reynisfjara</a></strong> black sand beach — basalt columns, Reynisdrangar sea stacks. Stay back from the water.</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Coffee at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.4197,-19.0019" target="_blank" rel="noopener">Smiðjan Brugghús</a></strong> in Vík.</div></div>
+        <div class="itin-row"><div class="itin-time">11:45</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.5320,-19.5119" target="_blank" rel="noopener">Skógafoss</a></strong> — climb the 370 steps to the top. 45 min.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.6156,-19.9889" target="_blank" rel="noopener">Seljalandsfoss</a></strong> — walk behind it. Bring a waterproof layer.</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.5436,-19.5106" target="_blank" rel="noopener">Gamla Fjósið</a></strong> — converted cowshed, best burger in south Iceland.</div></div>
+        <div class="itin-row"><div class="itin-time">15:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.2558,-21.1300" target="_blank" rel="noopener">Þingvellir</a></strong> — walk the Almannagjá rift between two continents.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.3107,-20.3017" target="_blank" rel="noopener">Geysir</a></strong> + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.3275,-20.1206" target="_blank" rel="noopener">Gullfoss</a></strong>. Strokkur erupts every 8 min. Gullfoss drops into a canyon.</div></div>
+        <div class="itin-row"><div class="itin-time">19:00</div><div class="itin-desc">Arrive ION. Check in. Geothermal pool. Dinner at Silfra restaurant.</div></div>
+        <div class="itin-row"><div class="itin-time">22:00</div><div class="itin-desc">Last drink at the Northern Lights bar.</div></div>
+      </div>
+      <div class="itinerary" style="margin-top:14px">
+        <div class="itin-title">Day 12 · Leisure day at ION</div>
+        <div class="itin-row"><div class="itin-time">10:00</div><div class="itin-desc">Late breakfast. No agenda. Geothermal pool, sauna, repeat.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at Silfra restaurant. Read. Nap. Soak again.</div></div>
+        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc"><strong>Optional:</strong> drive 20 min to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.2558,-21.1300" target="_blank" rel="noopener">Þingvellir</a></strong> for a second visit or the Silfra snorkel.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Final dinner. Northern Lights bar. One last soak.</div></div>
+      </div>
+      <div class="itinerary" style="margin-top:14px">
+        <div class="itin-title">Day 13 · Flight home</div>
+        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Slow breakfast. One more spa session.</div></div>
+        <div class="itin-row"><div class="itin-time">12:00</div><div class="itin-desc">Depart ION. 50 min to Reykjavík.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch: <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1452,-21.9322" target="_blank" rel="noopener">Sandholt bakery</a></strong>, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1456,-21.9354" target="_blank" rel="noopener">Kaffi Vínyl</a></strong>, or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1469,-21.9387" target="_blank" rel="noopener">Íslenski Barinn</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc">Drive to KEF. Return rental. Check in.</div></div>
+        <div class="itin-row"><div class="itin-time">16:45</div><div class="itin-desc">FI 689 departs. Landing at 20:50 local.</div></div>
+      </div>
+      <div class="parking-note"><div class="pn-title">Golden Circle &amp; south coast</div><div>Reynisfjara <span class="pn-amt">1000 ISK</span> (lower lot) or <span class="pn-amt">750 ISK</span> (upper lot) via Parka. Skógafoss <span class="pn-amt">1000 ISK</span>. Seljalandsfoss <span class="pn-amt">1000 ISK</span>. Þingvellir <span class="pn-amt">1000 ISK</span> via Parka or checkit.is. Geysir <span class="pn-amt">1000 ISK</span> (8 hr max). Gullfoss <span class="pn-amt">free</span>. ION Adventure Hotel has free guest parking.</div></div><div class="chap-tags"><span class="tag">Reynisfjara</span><span class="tag">Skógafoss</span><span class="tag">Seljalandsfoss</span><span class="tag">Þingvellir</span><span class="tag">Geysir</span><span class="tag">Gullfoss</span></div>
+    </div>
+    <div class="chap-card">
+      <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/20458518/pexels-photo-20458518.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
+      <div class="chap-gallery">
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/26336846/pexels-photo-26336846.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Þingvellir rift</span></div>
+        <div class="chap-gallery-img" style="background-image:url(&#39;https://images.pexels.com/photos/17474931/pexels-photo-17474931.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600&#39;)"><span class="img-cap">Öxarárfoss</span></div>
+      </div>
+      <div class="chap-card-body">
+        <div class="hotel-name">ION Adventure Hotel</div>
+        <div class="hotel-loc">Nesjavellir · 801 Selfoss</div>
+        <p class="hotel-blurb">Design Hotels member. Concrete cube on stilts with salvaged Icelandic wood interiors, a geothermal pool, a bar called Northern Lights, and floor-to-ceiling glass facing the Þingvallavatn rift.</p>
+        <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">2</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$500</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$1,000</div></div></div>
+        <div class="links"><a class="lnk" href="https://www.ioniceland.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/ion-luxury-adventure.html?checkin=2026-06-02&amp;checkout=2026-06-04&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.1083,-21.3236" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Magma → ION · <strong>4 hrs · 290 km</strong> via south coast</div></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ============ DRIVING TIMELINE ============ -->
+<section class="timeline">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">CHAPTER VI · LOGISTICS</div>
+      <h2 class="section-title">The drive, <em>at a glance.</em></h2>
+      <p class="section-deck">Each row shows transit between overnight stops. Two long days — push to Akureyri and Magma to ION. The rest are short or medium with stops built in.</p>
+    </div>
+    <div class="tl-list">
+      <div class="tl-row"><div class="tl-day">N 1</div><div class="tl-place">Reykjavík</div><div class="tl-drive">arrival</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:8%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">N 2</div><div class="tl-place">Búðir</div><div class="tl-drive">2.5 h · 175 km</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:50%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">N 3</div><div class="tl-place">Akureyri</div><div class="tl-drive">5.0 h · 380 km</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:100%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">N 4–5</div><div class="tl-place">Mývatn · 2N</div><div class="tl-drive">1.0 h · 100 km</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:25%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">N 6–7</div><div class="tl-place">East Fjords · 2N</div><div class="tl-drive">3.5 h · 270 km</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:75%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">N 8–9</div><div class="tl-place">Jökulsárlón</div><div class="tl-drive">3.5 h · 270 km</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:75%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">N 10</div><div class="tl-place">Magma</div><div class="tl-drive">2.0 h · 175 km</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:45%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">N 11–12</div><div class="tl-place">ION</div><div class="tl-drive">4.0 h · 290 km</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:85%"></div></div></div></div>
+      <div class="tl-row"><div class="tl-day">JUN 4</div><div class="tl-place">KEF</div><div class="tl-drive">1.0 h · airport</div><div class="tl-bar-wrap"><div class="tl-bar"><div class="tl-bar-fill" style="width:22%"></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOTALS ============ -->
+<section class="totals">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">CHAPTER VII · ACCOUNTS</div>
+      <h2 class="section-title">The <em>damage.</em></h2>
+      <p class="section-deck">Per-night estimates for two adults. Actual rates shift with room type, Genius discount, and date drift. This is the realistic middle.</p>
+    </div>
+    <div class="tot-grid">
+      <div>
+        <table class="tot-table">
+          <thead><tr><th>N°</th><th>Hotel</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td class="night">01</td><td>Exeter Hotel ★</td><td>$480</td></tr>
+            <tr><td class="night">02</td><td>Hotel Búðir ★</td><td>$340</td></tr>
+            <tr><td class="night">03</td><td>Berjaya Iceland Hotels ★</td><td>$207</td></tr>
+            <tr><td class="night">04–05</td><td>Fosshotel Mývatn · 2N</td><td>$826</td></tr>
+            <tr><td class="night">06–07</td><td>Fosshotel Eastfjords · 2N</td><td>$600</td></tr>
+            <tr><td class="night">08–09</td><td>Hótel Jökulsárlón ★ · 2N</td><td>$1,070</td></tr>
+            <tr><td class="night">10</td><td>Magma Hotel ★</td><td>$700</td></tr>
+            <tr><td class="night">11–12</td><td>ION Adventure Hotel ★ · 2N</td><td>$1,000</td></tr>
+            <tr class="total-row"><td></td><td>12 nights · 2 adults</td><td>~$5,223</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="tot-side">
+        <h3>Booking <em>status.</em></h3>
+        <p class="tot-tip"><strong>7 of 8 booked.</strong> Confirmations on file in Gmail. Outstanding: <strong>Fosshotel Eastfjords (May 28–30, 2N)</strong> — book direct or via Booking.com.</p>
+        <p class="tot-tip"><strong>Hotel Búðir.</strong> Booked direct — phone <strong>+354 435 6700</strong> for any changes.</p>
+        <p class="tot-tip"><strong>ION Adventure Hotel.</strong> Booked direct via ioniceland.is — ref <strong>60744SG065703</strong>. Ask about Northern Lights wake-up + spa credit at check-in.</p>
+        <p class="tot-tip"><strong>Hótel Jökulsárlón.</strong> Booked direct — ref <strong>VQQZCXW</strong>. Reception: <strong>+354 478 1000</strong>.</p>
+        <p class="tot-tip"><strong>Zodiac at Jökulsárlón.</strong> Reserve at icelagoon.is weeks ahead. Late-afternoon slots are best for light.</p>
+        <p class="tot-tip"><strong>Whale tour.</strong> Book North Sailing for the classic oak schooner. Weather-dependent.</p>
+        <p class="tot-tip"><strong>Genius Level 3.</strong> Status unlocks 20% off and free breakfast at many Booking.com properties. Defaulted for the chain bookings.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="foot-mark">Sjáumst.</div>
+  <div class="foot-meta">ÍSLAND · MMXXVI · A 12-NIGHT SAGA</div>
+</footer>
+
+<script>
+(function(){
+  // ============ STICKY MINI-MAP LOGIC ============
+  const chapters = Array.from(document.querySelectorAll('article.chapter'));
+  const pins = Array.from(document.querySelectorAll('#mm-pins circle'));
+  const routePath = document.getElementById('mm-route');
+  const currentText = document.getElementById('mm-current');
+
+  // Labels per stop (matches data-stop 1..8)
+  const STOP_LABELS = {
+    '1':  { label: 'Reykjavík',       night: 'Night 1' },
+    '2':  { label: 'Búðir',           night: 'Night 2' },
+    '3':  { label: 'Akureyri',        night: 'Night 3' },
+    '4':  { label: 'Mývatn',          night: 'Nights 4–5' },
+    '5':  { label: 'Eastfjords',      night: 'Nights 6–7' },
+    '6':  { label: 'Jökulsárlón',     night: 'Nights 8–9' },
+    '7':  { label: 'Magma',           night: 'Night 10' },
+    '8':  { label: 'ION',             night: 'Nights 11–12' }
+  };
+
+  // Compute path length for stroke animation
+  const totalLen = routePath.getTotalLength();
+  routePath.style.strokeDasharray = totalLen;
+  routePath.style.strokeDashoffset = totalLen;
+  routePath.classList.add('active');
+
+  function updateMap(stopNum) {
+    // Mark pins
+    pins.forEach(p => {
+      const s = parseInt(p.getAttribute('data-stop'), 10);
+      p.classList.remove('visited', 'current');
+      if (s < stopNum) p.classList.add('visited');
+      else if (s === stopNum) p.classList.add('current');
+    });
+    // Animate route fill: reveal fraction proportional to stopNum / 8
+    // CSS transition on .mm-route.active handles the easing
+    const frac = Math.min(stopNum / 8, 1);
+    routePath.style.strokeDashoffset = totalLen * (1 - frac);
+
+    // Fade label text on change
+    const info = STOP_LABELS[stopNum];
+    const newHTML = info
+      ? '<span class="num">' + (stopNum < 10 ? '0' + stopNum : stopNum) + '</span>' + info.label
+      : 'Begin the journey';
+    if (currentText.innerHTML !== newHTML) {
+      currentText.style.opacity = '0';
+      setTimeout(function(){
+        currentText.innerHTML = newHTML;
+        currentText.style.opacity = '1';
+      }, 180);
+    }
+  }
+
+  // Scroll listener — find which chapter is crossing the viewport midline
+  let currentStop = 0;
+  let ticking = false;
+
+  function checkPosition() {
+    const midY = window.innerHeight / 2;
+    let activeStop = 0;
+    for (const c of chapters) {
+      const r = c.getBoundingClientRect();
+      if (r.top <= midY && r.bottom >= midY) {
+        activeStop = parseInt(c.getAttribute('data-stop'), 10);
+        break;
+      }
+    }
+    // Also handle when past all chapters
+    if (!activeStop) {
+      const last = chapters[chapters.length - 1];
+      if (last && last.getBoundingClientRect().bottom < midY) {
+        activeStop = parseInt(last.getAttribute('data-stop'), 10);
+      }
+    }
+    if (activeStop !== currentStop) {
+      currentStop = activeStop;
+      updateMap(activeStop);
+    }
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(checkPosition);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('wheel', onScroll, { passive: true });
+  window.addEventListener('touchmove', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  // Polling fallback — some browsers / iframes can miss scroll events
+  setInterval(checkPosition, 300);
+
+  // Initial state
+  updateMap(0);
+  checkPosition();
+})();
+</script>
+
+
+
+
+<script>
+(function(){
+  const EXPECTED_HASH = "948c710e16a15027a561598d053fdf1e910b9d222cab0ac0d09f23a01cc8416b";
+  const KEY = "ice2026-pg";
+  const TTL_MS = 90 * 24 * 60 * 60 * 1000;  // 90 days
+
+  // SHA-256 via Web Crypto
+  async function sha256(str){
+    const buf = new TextEncoder().encode(str);
+    const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+    return Array.from(new Uint8Array(hashBuf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  function alreadyUnlocked(){
+    try{
+      const raw = localStorage.getItem(KEY);
+      if(!raw) return false;
+      const obj = JSON.parse(raw);
+      return obj.h === EXPECTED_HASH && (Date.now() - obj.t) < TTL_MS;
+    }catch(e){ return false; }
+  }
+
+  function unlock(){
+    try{ localStorage.setItem(KEY, JSON.stringify({h:EXPECTED_HASH, t:Date.now()})); }catch(e){}
+    const gate = document.getElementById("pin-gate");
+    if(gate){ gate.classList.add("hidden"); }
+    document.documentElement.classList.remove("pg-lock");
+    document.body.classList.remove("pg-lock");
+  }
+
+  function init(){
+    if(alreadyUnlocked()){ unlock(); return; }
+    document.documentElement.classList.add("pg-lock");
+    document.body.classList.add("pg-lock");
+    const gate = document.getElementById("pin-gate");
+    const inputs = Array.from(gate.querySelectorAll(".pg-pin input"));
+    const hint = document.getElementById("pg-hint");
+
+    setTimeout(()=>inputs[0].focus(), 50);
+
+    function readPin(){ return inputs.map(i=>i.value).join(''); }
+    function clearAll(){ inputs.forEach(i=>i.value=''); inputs[0].focus(); }
+
+    async function tryUnlock(){
+      const pin = readPin();
+      if(pin.length !== 4) return;
+      const h = await sha256(pin);
+      if(h === EXPECTED_HASH){ unlock(); }
+      else{
+        gate.classList.add("error");
+        hint.textContent = "Wrong code — try again";
+        setTimeout(()=>{
+          gate.classList.remove("error");
+          clearAll();
+        }, 480);
+      }
+    }
+
+    inputs.forEach((inp, idx)=>{
+      inp.addEventListener("input", e=>{
+        const v = e.target.value.replace(/[^0-9]/g,'');
+        e.target.value = v.slice(0,1);
+        if(e.target.value && idx < inputs.length - 1){ inputs[idx+1].focus(); }
+        if(readPin().length === 4){ tryUnlock(); }
+      });
+      inp.addEventListener("keydown", e=>{
+        if(e.key === "Backspace" && !inp.value && idx > 0){ inputs[idx-1].focus(); }
+        if(e.key === "Enter"){ tryUnlock(); }
+      });
+      inp.addEventListener("paste", e=>{
+        const data = (e.clipboardData||window.clipboardData).getData('text').replace(/[^0-9]/g,'').slice(0,4);
+        if(!data) return;
+        e.preventDefault();
+        for(let i=0;i<4;i++){ inputs[i].value = data[i] || ''; }
+        inputs[Math.min(data.length, 3)].focus();
+        if(data.length === 4) tryUnlock();
+      });
+    });
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body></html>
