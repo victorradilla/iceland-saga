@@ -539,6 +539,60 @@
   }
 
   
+  /* ============ FIELD NOTES (on the ground) ============ */
+  .field-note{margin-top:18px;padding:16px 20px;background:rgba(31,58,48,.06);border-left:2px solid var(--moss-light)}
+  .field-note .fn-title{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.25em;text-transform:uppercase;color:var(--moss);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .field-note .fn-title::before{content:'▸';color:var(--moss-light)}
+  .fn-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .fn-list li{font-size:13px;line-height:1.5;color:#2a2e2c;padding-left:0}
+  .fn-place{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--moss);display:block;margin-bottom:1px}
+  .fn-list .gear{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);background:rgba(201,164,74,.12);padding:2px 6px;margin-right:6px;white-space:nowrap;display:inline-block}
+
+  
+  /* ============ PACKING SECTION ============ */
+  .packing{background:var(--cream);padding:64px 24px;border-top:1px solid var(--rule)}
+  .pack-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px}
+  .pack-card{background:var(--paper);border:1px solid var(--rule);padding:22px 22px 8px}
+  .pack-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:10px;color:var(--ink)}
+  .pack-list{list-style:none}
+  .pack-item{
+    font-size:13.5px;line-height:1.45;color:#2a2e2c;
+    padding:9px 0 9px 28px;position:relative;cursor:pointer;
+    border-bottom:1px solid var(--rule-light);
+    user-select:none;-webkit-tap-highlight-color:transparent;
+    transition:opacity .15s;
+  }
+  .pack-card .pack-item:last-child{border-bottom:none}
+  .pack-item::before{
+    content:'';position:absolute;left:0;top:9px;
+    width:15px;height:15px;border:1.5px solid var(--moss);border-radius:3px;
+    box-sizing:border-box;transition:all .15s;
+  }
+  .pack-item.flag::before{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,164,74,.18)}
+  .pack-item.checked{opacity:.45;text-decoration:line-through}
+  .pack-item.checked::before{
+    background:var(--moss);border-color:var(--moss);
+    content:'✓';color:var(--paper);font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;line-height:1;
+  }
+  .pack-flag-note{
+    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--gold);margin-left:8px;
+  }
+  .pack-meta{display:flex;align-items:center;gap:18px;margin-top:32px;flex-wrap:wrap}
+  .pack-progress{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--ash);text-transform:uppercase}
+  .pack-reset{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+    background:transparent;border:1px solid var(--ash);color:var(--ash);
+    padding:8px 14px;cursor:pointer;transition:all .2s;
+  }
+  .pack-reset:hover{border-color:var(--ink);color:var(--ink)}
+  @media(min-width:720px){.pack-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1100px){.pack-grid{grid-template-columns:1fr 1fr 1fr;max-width:1600px;margin-left:auto;margin-right:auto;padding-right:340px}}
+  @media(min-width:900px){.packing{padding:90px 60px}}
+  @media(max-width:599px){.packing{padding:48px 16px}.pack-card{padding:18px 18px 6px}}
+
+  
   /* ============ PIN GATE ============ */
   #pin-gate{
     position:fixed;inset:0;z-index:9999;
@@ -605,6 +659,34 @@
   }
   html.pg-lock,body.pg-lock{overflow:hidden;height:100vh}
 
+  
+  /* ============ MINIMAP OVERLAY OVERRIDE ============ */
+  @media (min-width:1100px){
+    .container{padding-right:0 !important}
+    .pack-grid{padding-right:0 !important}
+    /* widen the day/rail column so it matches the map width exactly */
+    .chap-grid{padding-right:0 !important; grid-template-columns:220px 2.5fr 1fr !important}
+    .minimap{
+      top:auto !important;
+      bottom:24px !important;
+      left:60px !important;                 /* aligned with the chapter left padding = under the numbers */
+      right:auto !important;
+      transform:none !important;
+      width:220px;                          /* same width as the day column */
+      padding:16px 16px 14px !important;
+      pointer-events:none;                  /* read & click straight through it */
+      background:rgba(10,14,13,.55) !important;
+      backdrop-filter:none !important;
+      -webkit-backdrop-filter:none !important;
+      box-shadow:0 10px 36px rgba(0,0,0,.28);
+      border-color:rgba(224,189,95,.5);
+      opacity:0;                            /* hidden until you scroll into the chapters */
+      transition:opacity .55s ease;
+    }
+    .minimap.mm-revealed{opacity:1}
+    .minimap .minimap-current{font-size:18px}   /* fit the narrower box */
+  }
+
   </style>
 </head>
 <body>
@@ -632,7 +714,7 @@
   </div>
 
   <div class="hero-mid">
-    <div class="eyebrow">A 12-Night Saga · Counterclockwise</div>
+    <div class="eyebrow">A 12-Night Saga · Clockwise</div>
     <h1 class="title">Ísland<br><em>awaits.</em></h1>
     <p class="lede">Twelve nights at the edge of Europe, when the sun refuses to set and the wind carries the smell of the sea and of sulphur. Fire beneath ice. Basalt beneath moss. A road that loops the island once, returning you changed.</p>
   </div>
@@ -653,7 +735,7 @@
     <!-- Iceland coastline — traced from real coordinates via lon/lat→SVG mapping -->
     <path class="mm-coast" d="M 55.8,159.4 L 64.9,158.4 L 71.7,152.6 L 74,149.9 L 78.6,157.8 L 89.9,164.7 L 105.9,171 L 121.8,177.3 L 140,180.4 L 158.2,175.2 L 171.9,165.7 L 190.1,159.4 L 203.7,148.9 L 219.7,143.6 L 226.5,136.8 L 235.6,131.5 L 249.2,122.6 L 253.8,115.8 L 247,112.1 L 253.8,106.8 L 260.6,101.6 L 253.8,98.4 L 262.9,94.7 L 251.5,92.1 L 265.2,87.9 L 249.2,84.2 L 258.3,79 L 247,76.3 L 260.6,70 L 242.4,65.8 L 235.6,60.6 L 242.4,55.3 L 253.8,42.2 L 242.4,34.3 L 231,29 L 219.7,24.8 L 208.3,31.7 L 196.9,39.5 L 185.5,43.7 L 178.7,42.2 L 167.3,39.5 L 162.8,55.3 L 160.5,61.6 L 155.9,55.3 L 151.4,44.8 L 144.6,36.9 L 135.4,39.5 L 142.3,34.3 L 128.6,36.9 L 121.8,42.2 L 128.6,52.7 L 117.2,50.1 L 110.4,42.2 L 105.9,47.4 L 99,55.3 L 110.4,62.7 L 99,60.6 L 94.5,55.3 L 87.7,59.5 L 83.1,65.8 L 89.9,57.9 L 78.6,52.7 L 71.7,57.9 L 76.3,50.1 L 83.1,45.9 L 71.7,44.8 L 67.2,39.5 L 60.3,34.3 L 49,42.2 L 53.5,36.9 L 44.4,29 L 37.6,23.8 L 26.2,21.1 L 14.8,29 L 14.8,39.5 L 21.7,50.1 L 30.8,52.7 L 26.2,60.6 L 37.6,65.8 L 49,68.5 L 60.3,73.7 L 71.7,81.6 L 55.8,93.2 L 49,100 L 37.6,105.3 L 30.8,108.9 L 37.6,113.1 L 49,112.1 L 60.3,108.9 L 71.7,106.8 L 76.3,115.8 L 74,121.6 L 83.1,128.9 L 76.3,134.2 L 83.1,142.1 L 71.7,144.7 L 64.9,149.9 L 60.3,154.1 L 55.8,159.4 Z"></path>
 
-    <!-- Ring Road route — smooth bezier counterclockwise -->
+    <!-- Ring Road route — smooth bezier clockwise -->
     <path id="mm-route" class="mm-route active" d="M 74,142.1 C 69.9,132 64.4,116 60.3,108.9 C 58.9,104 57.1,96 55.8,93.2 C 80,82 125,66 160.5,61.6 C 170,62 180,64 187.8,65.8 C 208,72 240,88 253.8,101.1 C 245,112 232,132 219.7,142.1 C 214,144 208,146 203.7,147.3 C 194,152 180,158 171.9,161.5 C 146,160 112,144 87.7,138.4 C 83,139 78,141 74,142.1" style="stroke-dasharray: 471.778; stroke-dashoffset: 294.861;"></path>
 
     <!-- 8 stops at real geographic positions (lon/lat mapped) -->
@@ -683,11 +765,11 @@
         <div class="section-num">PROLOGUE</div>
         <h2>A month the <em>sagas remember.</em></h2>
         <p class="ov-para">Late May is when Iceland exhales. The puffins return to Borgarfjörður Eystri. The humpbacks come up to feed in Skjálfandi Bay. Snow pulls back from the lowland roads and the interior wakes slowly, cautiously, the way a bear might. For three weeks between the last of the winter closures and the full arrival of summer, the island is briefly, almost impossibly, yours.</p>
-        <p class="ov-para">This route loops the Ring Road counterclockwise, weighted toward the volcanic northeast — where Lake Mývatn steams beneath pseudocraters and the earth is still trying to decide whether to cool — and the glacial southeast, where icebergs calve into a tidal lagoon and wash back onto a beach of black sand. Two nights at Mývatn. Two in the Eastfjords. Two at the glacier. The sunsets last four hours. The light does not go out.</p>
+        <p class="ov-para">This route loops the Ring Road clockwise, weighted toward the volcanic northeast — where Lake Mývatn steams beneath pseudocraters and the earth is still trying to decide whether to cool — and the glacial southeast, where icebergs calve into a tidal lagoon and wash back onto a beach of black sand. Two nights at Mývatn. Two in the Eastfjords. Two at the glacier. The sunsets last four hours. The light does not go out.</p>
         <p class="ov-para">Around those anchors, smaller rooms unfold: a black wooden church on a lava peninsula, a rainbow-painted art village in a fjord, a lava-field cabin under the midnight sun, a concrete hotel at the edge of the continental rift. Twelve nights. Not a list. A passage.</p>
 
         <div class="ov-meta">
-          <div class="meta-item"><div class="meta-label">Direction</div><div class="meta-val">Counterclockwise</div></div>
+          <div class="meta-item"><div class="meta-label">Direction</div><div class="meta-val">Clockwise</div></div>
           <div class="meta-item"><div class="meta-label">Daylight</div><div class="meta-val">~21 hrs</div></div>
           <div class="meta-item"><div class="meta-label">Anchors</div><div class="meta-val">2N Mývatn · 2N East</div></div>
           <div class="meta-item"><div class="meta-label">Vehicle</div><div class="meta-val">4WD essential</div></div>
@@ -760,11 +842,11 @@
         <div class="itin-row"><div class="itin-time">09:25</div><div class="itin-desc">Land KEF. Clear customs (~45 min). Collect rental.</div></div>
         <div class="itin-row"><div class="itin-time">11:30</div><div class="itin-desc"><strong>Optional:</strong> Blue Lagoon soak en route (15 min from airport, pre-book 12:00 slot).</div></div>
         <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Check in. Unpack. Horizontal for an hour.</div></div>
-        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc">Walk Laugavegur. Coffee at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1456,-21.9295" target="_blank" rel="noopener">Reykjavík Roasters</a></strong>. Peek into Hallgrímskirkja.</div></div>
-        <div class="itin-row"><div class="itin-time">19:30</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1483,-21.9407" target="_blank" rel="noopener">Grillmarkaðurinn</a></strong> or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1502,-21.9485" target="_blank" rel="noopener">Matur og Drykkur</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc">Walk Laugavegur. Coffee at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Reykjav%C3%ADk%20Roasters" target="_blank" rel="noopener">Reykjavík Roasters</a></strong>. Peek into Hallgrímskirkja.</div></div>
+        <div class="itin-row"><div class="itin-time">19:30</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Grillmarka%C3%B0urinn%2C%20Reykjav%C3%ADk" target="_blank" rel="noopener">Grillmarkaðurinn</a></strong> or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Matur%20og%20Drykkur%2C%20Reykjav%C3%ADk" target="_blank" rel="noopener">Matur og Drykkur</a></strong>.</div></div>
         <div class="itin-row"><div class="itin-time">22:00</div><div class="itin-desc">Last drink at the hotel bar. Watch the harbour from your room. The sky still glows.</div></div>
       </div>
-      <div class="parking-note"><div class="pn-title">Reykjavík parking</div><div>Exeter Hotel is in central Reykjavík — paid zone <span class="pn-amt">P1</span>, 630 ISK/hr (~$5), max 3 hrs, 09:00–21:00 weekdays. Hotel guest parking is on-site; for walks around town, pay via <strong>Parka</strong> or <strong>EasyPark</strong>. Free overnight and Sundays after 21:00.</div></div><div class="chap-tags"><span class="tag">Arrival</span><span class="tag">Blue Lagoon</span><span class="tag">Hallgrímskirkja</span><span class="tag">First dinner</span></div>
+      <div class="parking-note"><div class="pn-title">Reykjavík parking</div><div>Exeter Hotel is in central Reykjavík — paid zone <span class="pn-amt">P1</span>, 630 ISK/hr (~$5), max 3 hrs, 09:00–21:00 weekdays. Hotel guest parking is on-site; for walks around town, pay via <strong>Parka</strong> or <strong>EasyPark</strong>. Free overnight and Sundays after 21:00.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Blue Lagoon</span><span class="gear">Swimsuit</span>Pre-booked time slot required. Towel included; leave valuables in the car. ~2 hrs, then drive on.</li><li><span class="fn-place">Laugavegur &amp; Hallgrímskirkja</span><span class="gear">Pay P1</span>Park central (zone P1, EasyPark) and walk it. Light jacket. Church tower has a small entry fee.</li><li><span class="fn-place">Dinner</span><span class="gear">Book ahead</span>Reserve Grillmarkaðurinn / Matur og Drykkur in advance — they fill up.</li></ul></div><div class="chap-tags"><span class="tag">Arrival</span><span class="tag">Blue Lagoon</span><span class="tag">Hallgrímskirkja</span><span class="tag">First dinner</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/17391036/pexels-photo-17391036.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
@@ -777,7 +859,7 @@
         <div class="hotel-loc">Tryggvagata 12 · 101 Reykjavík</div>
         <p class="hotel-blurb">Keahotels property on the old harbour. Deluxe rooms with harbour views, breakfast included, and a central location minutes from Laugavegur and Harpa concert hall.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">2</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$480</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.7★</div></div></div>
-        <div class="links"><a class="lnk" href="https://www.keahotels.is/en/hotels/exeter-hotel" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/exeter-by-keahotels.html?checkin=2026-05-23&amp;checkout=2026-05-24&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.1486,-21.9430" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://www.keahotels.is/en/hotels/exeter-hotel" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/exeter-by-keahotels.html?checkin=2026-05-23&amp;checkout=2026-05-24&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=Exeter%20Hotel%2C%20Reykjav%C3%ADk%2C%20Iceland" target="_blank" rel="noopener">Open in Google Maps →</a></div>
       </div>
     </div>
   </div>
@@ -798,14 +880,14 @@
       <div class="itinerary">
         <div class="itin-title">Day 2 · Itinerary</div>
         <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Breakfast at the hotel. Depart Reykjavík.</div></div>
-        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.7022,-20.9794" target="_blank" rel="noopener">Hraunfossar</a></strong> waterfalls — blue water bleeding sideways out of a lava field. 20 min stop.</div></div>
-        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc">Lunch at the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.5408,-21.9203" target="_blank" rel="noopener">Settlement Center café</a></strong>, Borgarnes.</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hraunfossar%2C%20Iceland" target="_blank" rel="noopener">Hraunfossar</a></strong> waterfalls — blue water bleeding sideways out of a lava field. 20 min stop.</div></div>
+        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc">Lunch at the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Settlement%20Center%2C%20Borgarnes" target="_blank" rel="noopener">Settlement Center café</a></strong>, Borgarnes.</div></div>
         <div class="itin-row"><div class="itin-time">15:30</div><div class="itin-desc">Arrive Búðir. Check in. Reserve dinner.</div></div>
-        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Walk the lava path to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.8221,-23.3819" target="_blank" rel="noopener">Búðakirkja</a></strong> (black church).</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Walk the lava path to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=B%C3%BA%C3%B0akirkja%20black%20church%2C%20Iceland" target="_blank" rel="noopener">Búðakirkja</a></strong> (black church).</div></div>
         <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at the hotel — small menu, mostly lamb and local fish.</div></div>
         <div class="itin-row"><div class="itin-time">22:00</div><div class="itin-desc">Last light over the Atlantic. Bring a coat.</div></div>
       </div>
-      <div class="parking-note"><div class="pn-title">Snæfellsnes parking</div><div>Hotel Búðir parking is free. Kirkjufell viewpoint and Snæfellsjökull trailheads are free. Hraunfossar parking is free. No paid lots on the peninsula today.</div></div><div class="chap-tags"><span class="tag">Black church</span><span class="tag">Hraunfossar</span><span class="tag">Lava field</span><span class="tag">Last light 22:00</span></div>
+      <div class="parking-note"><div class="pn-title">Snæfellsnes parking</div><div>Hotel Búðir parking is free. Kirkjufell viewpoint and Snæfellsjökull trailheads are free. Hraunfossar parking is free. No paid lots on the peninsula today.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Hraunfossar</span><span class="gear">Go straight in</span>Free parking, 5-min boardwalk to the viewpoint. 20 min.</li><li><span class="fn-place">Kirkjufell</span><span class="gear">Boots + rain shell</span>Free roadside parking. The waterfall side gets slippery — sturdy shoes.</li><li><span class="fn-place">Búðakirkja</span><span class="gear">Windproof layer</span>Free parking beside Hótel Búðir. Short lava-path walk to the black church.</li><li><span class="fn-place">Settlement Center</span><span class="gear">Lunch stop</span>In Borgarnes en route — café + saga exhibition. Good coffee and a leg-stretch.</li><li><span class="fn-place">Hotel dinner</span><span class="gear">Reserve at check-in</span>Only dinner for 40 km — book your table the moment you arrive.</li></ul></div><div class="chap-tags"><span class="tag">Black church</span><span class="tag">Hraunfossar</span><span class="tag">Lava field</span><span class="tag">Last light 22:00</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/18138566/pexels-photo-18138566.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
@@ -818,7 +900,7 @@
         <div class="hotel-loc">356 Snæfellsbær · Western Region</div>
         <p class="hotel-blurb">28 rooms on a remote lava peninsula next to an iconic 17th-century church. Romantic, photogenic, silent to the point of ringing. Breakfast not included — 2,800 ISK (~$19) per person.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">2</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$340</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.6★</div></div></div>
-        <div class="links"><a class="lnk" href="https://www.budir.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/budir.html?checkin=2026-05-24&amp;checkout=2026-05-25&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.8222,-23.3819" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://www.budir.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/budir.html?checkin=2026-05-24&amp;checkout=2026-05-25&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C3%B3tel%20B%C3%BA%C3%B0ir%2C%20Iceland" target="_blank" rel="noopener">Open in Google Maps →</a></div>
         <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Reykjavík → Búðir · <strong>2.5 hrs · 175 km</strong></div></div>
       </div>
     </div>
@@ -838,18 +920,18 @@
       <div class="chap-place">NORTH · AKUREYRI</div>
       <h3 class="chap-title">The <em>long</em> north.</h3>
       <p class="chap-lead">This is the day you cross. Five hours in the driver's seat, tracing the northern coast from west to east. Iceland narrows here. The Atlantic pressing from one side, uninhabited highlands from the other. You will pass more sheep than cars.</p>
-      <p class="chap-body">Break the drive twice. First at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6058,-19.5083" target="_blank" rel="noopener">Glaumbær</a></strong> — a turf-roofed farm from the saga era. Then at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6066,-20.6373" target="_blank" rel="noopener">Hvítserkur</a></strong>, a basalt sea stack local tradition says is a petrified troll, caught out by the sunrise. Arrive Akureyri — unofficial capital of the north, population 19,000 — with traffic lights shaped like hearts.</p>
+      <p class="chap-body">Break the drive twice. First at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Glaumb%C3%A6r%20turf%20farm%20museum%2C%20Iceland" target="_blank" rel="noopener">Glaumbær</a></strong> — a turf-roofed farm from the saga era. Then at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hv%C3%ADtserkur%20rock%2C%20Iceland" target="_blank" rel="noopener">Hvítserkur</a></strong>, a basalt sea stack local tradition says is a petrified troll, caught out by the sunrise. Arrive Akureyri — unofficial capital of the north, population 19,000 — with traffic lights shaped like hearts.</p>
       <div class="itinerary">
         <div class="itin-title">Day 3 · Itinerary</div>
         <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Early breakfast. Today needs momentum.</div></div>
         <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Depart Búðir. Route 54 north, then Route 1 east.</div></div>
-        <div class="itin-row"><div class="itin-time">11:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6066,-20.6373" target="_blank" rel="noopener">Hvítserkur</a></strong> sea stack — 10 min walk to the viewpoint.</div></div>
-        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6612,-20.2864" target="_blank" rel="noopener">Ólafshús</a></strong> in Blönduós.</div></div>
-        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6058,-19.5083" target="_blank" rel="noopener">Glaumbær</a></strong> turf farm museum. 45 min.</div></div>
+        <div class="itin-row"><div class="itin-time">11:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hv%C3%ADtserkur%20rock%2C%20Iceland" target="_blank" rel="noopener">Hvítserkur</a></strong> sea stack — 10 min walk to the viewpoint.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%93lafsh%C3%BAs%20restaurant%2C%20Bl%C3%B6ndu%C3%B3s" target="_blank" rel="noopener">Ólafshús</a></strong> in Blönduós.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Glaumb%C3%A6r%20turf%20farm%20museum%2C%20Iceland" target="_blank" rel="noopener">Glaumbær</a></strong> turf farm museum. 45 min.</div></div>
         <div class="itin-row"><div class="itin-time">18:00</div><div class="itin-desc">Arrive Akureyri. Walk to Akureyrarkirkja.</div></div>
-        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6812,-18.0907" target="_blank" rel="noopener">Strikið</a></strong> (fjord views, lamb) or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6794,-18.0867" target="_blank" rel="noopener">RUB23</a></strong> (excellent sushi).</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Striki%C3%B0%20restaurant%2C%20Akureyri" target="_blank" rel="noopener">Strikið</a></strong> (fjord views, lamb) or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=RUB23%20restaurant%2C%20Akureyri" target="_blank" rel="noopener">RUB23</a></strong> (excellent sushi).</div></div>
       </div>
-      <div class="parking-note"><div class="pn-title">Akureyri parking</div><div>Akureyri uses a free disc system in the centre — write your arrival time on the cardboard disc the rental car comes with and place it on the dashboard. <strong>1-hour max</strong> in most spots. Hvítserkur and Glaumbær parking are free. Berjaya hotel has its own lot.</div></div><div class="chap-tags"><span class="tag">Long drive</span><span class="tag">Turf farm</span><span class="tag">Petrified troll</span><span class="tag">Fjord town</span></div>
+      <div class="parking-note"><div class="pn-title">Akureyri parking</div><div>Akureyri uses a free disc system in the centre — write your arrival time on the cardboard disc the rental car comes with and place it on the dashboard. <strong>1-hour max</strong> in most spots. Hvítserkur and Glaumbær parking are free. Berjaya hotel has its own lot.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Hvítserkur</span><span class="gear">Boots</span>Free parking; 10-min walk down to the viewpoint, can be muddy.</li><li><span class="fn-place">Glaumbær</span><span class="gear">Cash/card for entry</span>Turf-farm museum, ~1,800 ISK, 45 min. Mostly indoors.</li><li><span class="fn-place">Akureyri centre</span><span class="gear">Parking disc</span>Free parking but set the cardboard clock-disc on your dash; 1-hr limit in the centre.</li></ul></div><div class="chap-tags"><span class="tag">Long drive</span><span class="tag">Turf farm</span><span class="tag">Petrified troll</span><span class="tag">Fjord town</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/32636533/pexels-photo-32636533.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
@@ -862,7 +944,7 @@
         <div class="hotel-loc">Skipagata 4 · 600 Akureyri</div>
         <p class="hotel-blurb">Modern 4-star hotel with mountain views over Eyjafjörður. 24-hour front desk (perfect for late arrivals), on-site restaurant, and a central location steps from the harbour and heart-shaped traffic lights.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">3</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$207</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.2★</div></div></div>
-        <div class="links"><a class="lnk" href="https://www.berjayaiceland.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/kea-akureyri.html?checkin=2026-05-25&amp;checkout=2026-05-26&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=65.6810,-18.0894" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://www.berjayaiceland.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/kea-akureyri.html?checkin=2026-05-25&amp;checkout=2026-05-26&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=Berjaya%20Akureyri%20H%C3%B3tel%2C%20Skipagata%204%2C%20Akureyri" target="_blank" rel="noopener">Open in Google Maps →</a></div>
         <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Búðir → Akureyri · <strong>5 hrs · 380 km</strong> · longest transit</div></div>
       </div>
     </div>
@@ -884,28 +966,27 @@
       <div class="itinerary">
         <div class="itin-title">Day 4 · Arrival &amp; Earth Lagoon</div>
         <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Leave Akureyri. Route 1 east.</div></div>
-        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6829,-17.5500" target="_blank" rel="noopener">Goðafoss</a></strong> — Waterfall of the Gods. Park, walk 5 min, spend 30.</div></div>
+        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Go%C3%B0afoss%20waterfall%2C%20Iceland" target="_blank" rel="noopener">Goðafoss</a></strong> — Waterfall of the Gods. Park, walk 5 min, spend 30.</div></div>
         <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Arrive Mývatn. Check in at Fosshotel. Settle in — two nights of fire and earth.</div></div>
-        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5921,-16.9275" target="_blank" rel="noopener">Vogafjós Cowshed Café</a></strong> — watch cows being milked through the glass.</div></div>
-        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5916,-16.9111" target="_blank" rel="noopener">Dimmuborgir</a></strong> lava labyrinth — towering basalt pillars and arches. 1.5 hrs.</div></div>
-        <div class="itin-row"><div class="itin-time">16:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5713,-17.0290" target="_blank" rel="noopener">Skútustaðagígar</a></strong> pseudocraters along the lakeshore. Easy walking.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Vogafj%C3%B3s%20Farm%20Resort%2C%20M%C3%BDvatn" target="_blank" rel="noopener">Vogafjós Cowshed Café</a></strong> — watch cows being milked through the glass.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Dimmuborgir%2C%20M%C3%BDvatn" target="_blank" rel="noopener">Dimmuborgir</a></strong> lava labyrinth — towering basalt pillars and arches. 1.5 hrs.</div></div>
+        <div class="itin-row"><div class="itin-time">16:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sk%C3%BAtusta%C3%B0ag%C3%ADgar%20pseudocraters%2C%20M%C3%BDvatn" target="_blank" rel="noopener">Skútustaðagígar</a></strong> pseudocraters along the lakeshore. Easy walking.</div></div>
         <div class="itin-row"><div class="itin-time">18:00</div><div class="itin-desc">Dinner at the hotel — Nordic cuisine with lake views.</div></div>
-        <div class="itin-row"><div class="itin-time">21:00</div><div class="itin-desc">Evening soak at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6300,-16.8478" target="_blank" rel="noopener">Earth Lagoon</a></strong> (Mývatn Nature Baths) — milky-blue geothermal water, steam caves, midnight sun.</div></div>
+        <div class="itin-row"><div class="itin-time">21:00</div><div class="itin-desc">Evening soak at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=M%C3%BDvatn%20Nature%20Baths%2C%20Iceland" target="_blank" rel="noopener">Earth Lagoon</a></strong> (Mývatn Nature Baths) — milky-blue geothermal water, steam caves, midnight sun.</div></div>
       </div>
       <div class="itinerary" style="margin-top:14px">
-        <div class="itin-title">Day 5 · Húsavík whales &amp; the volcanic loop</div>
-        <div class="itin-row"><div class="itin-time">07:30</div><div class="itin-desc">Early breakfast. Big day — pack it tight.</div></div>
-        <div class="itin-row"><div class="itin-time">08:30</div><div class="itin-desc">Drive north to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0450,-17.3380" target="_blank" rel="noopener">Húsavík</a></strong> (50 min).</div></div>
-        <div class="itin-row"><div class="itin-time">10:00</div><div class="itin-desc"><strong>Whale-watching tour</strong> with North Sailing — 3 hrs on an oak schooner. Book ahead.</div></div>
-        <div class="itin-row"><div class="itin-time">13:30</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0466,-17.3398" target="_blank" rel="noopener">Naustið</a></strong> on the harbour — fresh seafood.</div></div>
-        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0481,-17.3329" target="_blank" rel="noopener">GeoSea Geothermal Baths</a></strong> — infinity pools on the cliff edge. 1 hr soak.</div></div>
-        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc">Drive back via Route 87. Stop at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6406,-16.8082" target="_blank" rel="noopener">Hverir</a></strong> — bubbling mud pots and fumaroles.</div></div>
-        <div class="itin-row"><div class="itin-time">17:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.7167,-16.7572" target="_blank" rel="noopener">Krafla caldera</a></strong> + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.7174,-16.7572" target="_blank" rel="noopener">Víti crater</a></strong> — milky-blue volcanic lake.</div></div>
-        <div class="itin-row"><div class="itin-time">18:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.6263,-16.8825" target="_blank" rel="noopener">Grjótagjá</a></strong> hot cave — the Game of Thrones scene.</div></div>
-        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Final Mývatn dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5921,-16.9275" target="_blank" rel="noopener">Vogafjós Cowshed Café</a></strong>. Earth Lagoon encore.</div></div>
+        <div class="itin-title">Day 5 · Húsavík — whales, puffins &amp; GeoSea</div>
+        <div class="itin-row"><div class="itin-time">Plan</div><div class="itin-desc">Volcanic loop done yesterday. <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=M%C3%BDvatn%20Nature%20Baths%2C%20Iceland" target="_blank" rel="noopener">Earth Lagoon</a></strong> (Mývatn baths) is still closed for its rebuild — <strong>GeoSea</strong> in Húsavík is today's soak.</div></div>
+        <div class="itin-row"><div class="itin-time">10:30</div><div class="itin-desc">Slow morning, then drive north to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=H%C3%BAsav%C3%ADk%2C%20Iceland" target="_blank" rel="noopener">Húsavík</a></strong> (50 min).</div></div>
+        <div class="itin-row"><div class="itin-time">12:00</div><div class="itin-desc"><strong>Whales + puffins:</strong> <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=H%C3%BAsav%C3%ADk%20Adventures%2C%20H%C3%BAsav%C3%ADk%20harbour" target="_blank" rel="noopener">Húsavík Adventures</a></strong> RIB tour — fast 12-passenger boat, stops at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Lundey%20Puffin%20Island%2C%20H%C3%BAsav%C3%ADk%2C%20Iceland" target="_blank" rel="noopener">Puffin Island</a></strong> (Lundey, packed right now) and finds the whales. ~2 hrs. (Gentle Giants GG2 is the backup; North Sailing's combo is sold out.)</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Nausti%C3%B0%20restaurant%2C%20H%C3%BAsav%C3%ADk" target="_blank" rel="noopener">Naustið</a></strong> on the harbour — fresh seafood.</div></div>
+        <div class="itin-row"><div class="itin-time">15:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=GeoSea%20Geothermal%20Sea%20Baths%2C%20H%C3%BAsav%C3%ADk" target="_blank" rel="noopener">GeoSea Geothermal Baths</a></strong> — cliff-edge pools over the bay. <strong>Book ahead</strong> (reservation-only now); open till 22:00.</div></div>
+        <div class="itin-row"><div class="itin-time">16:30</div><div class="itin-desc">Want more puffins on land? <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Tj%C3%B6rnes%20puffin%20viewpoint%2C%20Iceland" target="_blank" rel="noopener">Tjörnes</a></strong> cliffs, 15 min north — free, no boat.</div></div>
+        <div class="itin-row"><div class="itin-time">18:00</div><div class="itin-desc">Drive back; stop at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Grj%C3%B3tagj%C3%A1%20cave%2C%20M%C3%BDvatn" target="_blank" rel="noopener">Grjótagjá</a></strong> hot cave (look, don't bathe) if you skipped it.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Final Mývatn dinner.</div></div>
       </div>
-      <div class="day-flow" style="margin-top:14px"><div class="day-flow-title">Dettifoss option</div><div class="day-flow-text"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.8146,-16.3850" target="_blank" rel="noopener">Dettifoss</a></strong> (Europe's most powerful waterfall) is 45 min east on Route 862. If weather is poor for whale watching, swap the Húsavík morning for Dettifoss + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=66.0150,-16.5050" target="_blank" rel="noopener">Ásbyrgi canyon</a></strong> instead.</div></div>
-      <div class="parking-note"><div class="pn-title">Mývatn region</div><div>Goðafoss <span class="pn-amt">1000 ISK</span> via <strong>Parka</strong>. Dimmuborgir <span class="pn-amt">free</span>. Dettifoss west side <span class="pn-amt">750 ISK</span> via Parka. Earth Lagoon (Mývatn Nature Baths) — parking free with entry. Hverir, Krafla, Grjótagjá: free. Hotel has its own lot.</div></div><div class="chap-tags"><span class="tag">Goðafoss</span><span class="tag">Húsavík whales</span><span class="tag">Dettifoss</span><span class="tag">Ásbyrgi</span><span class="tag">Krafla</span><span class="tag">Hverir</span><span class="tag">GoT cave</span><span class="tag">GeoSea baths</span></div>
+      <div class="day-flow" style="margin-top:14px"><div class="day-flow-title">Dettifoss option</div><div class="day-flow-text"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Dettifoss%20waterfall%20west%20side%20parking%2C%20Iceland" target="_blank" rel="noopener">Dettifoss</a></strong> (Europe's most powerful waterfall) is 45 min east on Route 862. If weather is poor for whale watching, swap the Húsavík morning for Dettifoss + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%81sbyrgi%20canyon%2C%20Iceland" target="_blank" rel="noopener">Ásbyrgi canyon</a></strong> instead.</div></div>
+      <div class="parking-note"><div class="pn-title">Mývatn region</div><div>Goðafoss <span class="pn-amt">free</span> parking. Hverir / Námafjall <span class="pn-amt">1200 ISK</span> via EasyPark. Dettifoss west side (Rd 862) <span class="pn-amt">750 ISK</span> via Parka. Dimmuborgir, Krafla / Víti, Grjótagjá, Skútustaðagígar: <span class="pn-amt">free</span>. Mývatn Nature Baths &amp; GeoSea — parking free with entry. Hotel has its own lot.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Goðafoss</span><span class="gear">Rain shell if windy</span>Free parking, paved 5-min path. Otherwise walk straight in. 30 min.</li><li><span class="fn-place">Dimmuborgir</span><span class="gear">Head net + boots</span>Free parking, marked lava loops. Midges can swarm — wear the net. 1.5 hrs.</li><li><span class="fn-place">Skútustaðagígar</span><span class="gear">Head net</span>Free parking. Flat lakeshore loop through the pseudocraters. 30–45 min.</li><li><span class="fn-place">Vogafjós</span><span class="gear">Book a table</span>Farm café/restaurant — watch the milking through the glass. Reserve for dinner.</li><li><span class="fn-place">Krafla / Víti</span><span class="gear">Go straight in</span>Free parking right at the crater, paved road in. Short rim walk around the milky-blue crater lake. ~30 min.</li><li><span class="fn-place">Hverir / Námafjall</span><span class="gear">1200 ISK · boots</span>Pay via EasyPark. Stay on the boardwalks — never step on pale crust. Strong sulphur smell.</li><li><span class="fn-place">Grjótagjá</span><span class="gear">Look, don't bathe</span>Free parking. Bathing is NOT allowed (private + too hot). Quick photo stop.</li><li><span class="fn-place">Earth Lagoon (Mývatn baths)</span><span class="gear">CLOSED — use GeoSea</span>Still shut for its rebuild on your dates. Soak at GeoSea in Húsavík instead.</li><li><span class="fn-place">GeoSea, Húsavík</span><span class="gear">Swimsuit</span>Cliff-edge infinity pools over Skjálfandi Bay, open till 22:00. Your soak now that Earth Lagoon is closed.</li><li><span class="fn-place">Húsavík whales + puffins</span><span class="gear">12pm · Húsavík Adventures</span>RIB, 12 pax — whales + a stop at Puffin Island. Seasick pill before; warm hat + windproof gloves. ~2 hrs. Gentle Giants GG2 is the backup.</li><li><span class="fn-place">Tjörnes puffins (land)</span><span class="gear">Free · no boat</span>15 min north of Húsavík (Hringsbjarg deck / Voladalstorfa). Evening is prime — birds return to the burrows.</li><li><span class="fn-place">Dettifoss</span><span class="gear">Rd 862 · boots</span>Take the paved west road (862), not gravel 864. Large car park, 750 ISK Parka, heavy spray.</li></ul></div><div class="chap-tags"><span class="tag">Goðafoss</span><span class="tag">Húsavík whales</span><span class="tag">Dettifoss</span><span class="tag">Ásbyrgi</span><span class="tag">Krafla</span><span class="tag">Hverir</span><span class="tag">GoT cave</span><span class="tag">GeoSea baths</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/10582416/pexels-photo-10582416.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
@@ -918,7 +999,7 @@
         <div class="hotel-loc">Grímsstaðir · 660 Mývatn</div>
         <p class="hotel-blurb">92 rooms overlooking Lake Mývatn. Nordic fine-dining restaurant with panoramic views, sauna, and terrace. Earth Lagoon geothermal baths are a 5-minute drive — your evening ritual for two nights.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">4</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$413</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$826</div></div></div>
-        <div class="links"><a class="lnk" href="https://www.islandshotel.is/hotels-in-iceland/fosshotel-myvatn/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/fosshotel-myvatn.html?checkin=2026-05-26&amp;checkout=2026-05-28&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=65.5811,-16.9794" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://www.islandshotel.is/hotels-in-iceland/fosshotel-myvatn/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/fosshotel-myvatn.html?checkin=2026-05-26&amp;checkout=2026-05-28&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=Fossh%C3%B3tel%20M%C3%BDvatn%2C%20Iceland" target="_blank" rel="noopener">Open in Google Maps →</a></div>
         <div class="day-flow"><div class="day-flow-title">Drive to Mývatn</div><div class="day-flow-text">Akureyri → Mývatn · <strong>1 hr · 100 km</strong> via Goðafoss</div></div>
       </div>
     </div>
@@ -936,26 +1017,26 @@
       <div class="chap-place">EAST FJORDS · FÁSKRÚÐSFJÖRÐUR</div>
       <h3 class="chap-title">Basalt, solitude, <em>and a rainbow road.</em></h3>
       <p class="chap-lead">East of Mývatn the road climbs through a pass of black gravel and dropping snow. On the far side, fjords — long fingers of Atlantic cut deep into the basalt — and Iceland's least-visited region. Two nights here is not a compromise; it is a reward. The part of Iceland most travellers rush through and later wish they hadn't.</p>
-      <p class="chap-body">On the way in, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.1500,-15.3289" target="_blank" rel="noopener">Stuðlagil canyon</a></strong> — hexagonal basalt columns lining a glacier-fed river the colour of a swimming pool. On day two, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2628,-14.0103" target="_blank" rel="noopener">Seyðisfjörður</a></strong> — a rainbow-painted village in a fjord so steep the clouds sit below the ridgeline. Between them, the quietest roads on the Ring, fishing harbours nobody else visits, and twenty hours of daylight with nothing to do but look.</p>
+      <p class="chap-body">On the way in, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Stu%C3%B0lagil%20Canyon%2C%20Iceland" target="_blank" rel="noopener">Stuðlagil canyon</a></strong> — hexagonal basalt columns lining a glacier-fed river the colour of a swimming pool. On day two, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sey%C3%B0isfj%C3%B6r%C3%B0ur%2C%20Iceland" target="_blank" rel="noopener">Seyðisfjörður</a></strong> — a rainbow-painted village in a fjord so steep the clouds sit below the ridgeline. Between them, the quietest roads on the Ring, fishing harbours nobody else visits, and twenty hours of daylight with nothing to do but look.</p>
       <div class="itinerary">
         <div class="itin-title">Day 6 · Stuðlagil &amp; arrival</div>
         <div class="itin-row"><div class="itin-time">08:30</div><div class="itin-desc">Early start from Mývatn. Route 1 east through the highland pass.</div></div>
-        <div class="itin-row"><div class="itin-time">10:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.1500,-15.3289" target="_blank" rel="noopener">Stuðlagil canyon</a></strong> — east viewpoint for the full basalt-column view. Morning light is best. Allow 2 hrs.</div></div>
-        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch: <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2627,-14.3949" target="_blank" rel="noopener">Café Nielsen</a></strong>, Egilsstaðir.</div></div>
+        <div class="itin-row"><div class="itin-time">10:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Stu%C3%B0lagil%20Canyon%2C%20Iceland" target="_blank" rel="noopener">Stuðlagil canyon</a></strong> — east viewpoint for the full basalt-column view. Morning light is best. Allow 2 hrs.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch: <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20Nielsen%2C%20Egilssta%C3%B0ir" target="_blank" rel="noopener">Café Nielsen</a></strong>, Egilsstaðir.</div></div>
         <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc">Drive south through the fjords. Scenic coast road — take it slow.</div></div>
         <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Arrive Fáskrúðsfjörður. Check in. Walk the harbour at golden hour.</div></div>
-        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.9319,-13.7833" target="_blank" rel="noopener">L'Abri</a></strong> — French-Icelandic fusion in a former French hospital.</div></div>
+        <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=L%27Abri%20restaurant%2C%20F%C3%A1skr%C3%BA%C3%B0sfj%C3%B6r%C3%B0ur" target="_blank" rel="noopener">L'Abri</a></strong> — French-Icelandic fusion in a former French hospital.</div></div>
       </div>
       <div class="itinerary" style="margin-top:14px">
         <div class="itin-title">Day 7 · Seyðisfjörður &amp; the fjord road</div>
-        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Breakfast. Drive north to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2628,-14.0103" target="_blank" rel="noopener">Seyðisfjörður</a></strong> (1.5 hrs via Egilsstaðir).</div></div>
-        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Walk the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2625,-14.0091" target="_blank" rel="noopener">rainbow road</a></strong>. Browse galleries and the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2620,-14.0117" target="_blank" rel="noopener">Skaftfell Center for Visual Art</a></strong>.</div></div>
-        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.2607,-14.0091" target="_blank" rel="noopener">Nordic Restaurant</a></strong> — fjord-side, refined Icelandic-Nordic menu.</div></div>
-        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc"><strong>Optional:</strong> Detour to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.5267,-13.7464" target="_blank" rel="noopener">Borgarfjörður Eystri</a></strong> for puffins at Hafnarhólmi (90 min each way).</div></div>
-        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Return to Fáskrúðsfjörður via the coast. Stop at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=65.0322,-14.2122" target="_blank" rel="noopener">Reyðarfjörður</a></strong> WWII museum.</div></div>
+        <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Breakfast. Drive north to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sey%C3%B0isfj%C3%B6r%C3%B0ur%2C%20Iceland" target="_blank" rel="noopener">Seyðisfjörður</a></strong> (1.5 hrs via Egilsstaðir).</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Walk the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rainbow%20Street%20Sey%C3%B0isfj%C3%B6r%C3%B0ur%2C%20Iceland" target="_blank" rel="noopener">rainbow road</a></strong>. Browse galleries and the <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Skaftfell%20Center%20for%20Visual%20Art%2C%20Sey%C3%B0isfj%C3%B6r%C3%B0ur" target="_blank" rel="noopener">Skaftfell Center for Visual Art</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Nord%20Austur%20Sushi%20%26%20Bar%2C%20Sey%C3%B0isfj%C3%B6r%C3%B0ur" target="_blank" rel="noopener">Nordic Restaurant</a></strong> — fjord-side, refined Icelandic-Nordic menu.</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc"><strong>Optional:</strong> Detour to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Hafnarh%C3%B3lmi%20puffin%20colony%2C%20Borgarfj%C3%B6r%C3%B0ur%20Eystri" target="_blank" rel="noopener">Borgarfjörður Eystri</a></strong> for puffins at Hafnarhólmi (90 min each way).</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc">Return to Fáskrúðsfjörður via the coast. Stop at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Icelandic%20Wartime%20Museum%2C%20Rey%C3%B0arfj%C3%B6r%C3%B0ur" target="_blank" rel="noopener">Reyðarfjörður</a></strong> WWII museum.</div></div>
         <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Final Eastfjords dinner. The sky won't set. Neither will you.</div></div>
       </div>
-      <div class="parking-note"><div class="pn-title">Eastfjords parking</div><div>Stuðlagil canyon east-side lot <span class="pn-amt">750 ISK</span> via Parka. Seyðisfjörður street parking free. Borgarfjörður Eystri puffin colony (Hafnarhólmi) free. Fáskrúðsfjörður hotel has on-site parking.</div></div><div class="chap-tags"><span class="tag">Stuðlagil</span><span class="tag">Seyðisfjörður</span><span class="tag">Rainbow road</span><span class="tag">Puffins</span><span class="tag">Fjord road</span><span class="tag">Art village</span></div>
+      <div class="parking-note"><div class="pn-title">Eastfjords parking</div><div>Stuðlagil canyon east-side lot <span class="pn-amt">750 ISK</span> via Parka. Seyðisfjörður street parking free. Borgarfjörður Eystri puffin colony (Hafnarhólmi) free. Fáskrúðsfjörður hotel has on-site parking.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Stuðlagil — EAST side</span><span class="gear">Pay · boots · snacks</span>Drive to the east parking for the real canyon view: ~45-min walk each way, NO toilets. Stay on marked paths (geese nesting to Jun 10). Morning light best.</li><li><span class="fn-place">Seyðisfjörður</span><span class="gear">Light jacket</span>Free street parking. Rainbow Street + blue church + galleries. ~1 hr.</li><li><span class="fn-place">Borgarfjörður Eystri</span><span class="gear">Best puffin colony</span>Hafnarhólmi platform, free — the easiest, closest puffin viewing in Iceland. Walk right up. ~90 min each way.</li><li><span class="fn-place">Reyðarfjörður</span><span class="gear">Quick stop</span>Icelandic Wartime Museum on the way back — small, free-ish, 30 min if WWII history's your thing.</li><li><span class="fn-place">L'Abri dinner</span><span class="gear">Book ahead</span>Small kitchen in Fáskrúðsfjörður — reserve.</li></ul></div><div class="chap-tags"><span class="tag">Stuðlagil</span><span class="tag">Seyðisfjörður</span><span class="tag">Rainbow road</span><span class="tag">Puffins</span><span class="tag">Fjord road</span><span class="tag">Art village</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/5411457/pexels-photo-5411457.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge not-booked">Not booked</div></div>
@@ -968,7 +1049,7 @@
         <div class="hotel-loc">Hafnargata 11–14 · 750 Fáskrúðsfjörður</div>
         <p class="hotel-blurb">Restored French Hospital from 1903 with a modern wing, directly on the fjord. Two nights here gives you time to explore Seyðisfjörður's galleries and photograph Stuðlagil properly.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">3</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$300</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$600</div></div></div>
-        <div class="links"><a class="lnk" href="https://www.islandshotel.is/hotels-in-iceland/fosshotel-eastfjords/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/fosshotel-east-fjords.html?checkin=2026-05-28&amp;checkout=2026-05-30&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.9351,-13.7833" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://www.islandshotel.is/hotels-in-iceland/fosshotel-eastfjords/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/fosshotel-east-fjords.html?checkin=2026-05-28&amp;checkout=2026-05-30&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=Fossh%C3%B3tel%20Eastfjords%2C%20F%C3%A1skr%C3%BA%C3%B0sfj%C3%B6r%C3%B0ur" target="_blank" rel="noopener">Open in Google Maps →</a></div>
         <div class="day-flow"><div class="day-flow-title">Drive to Eastfjords</div><div class="day-flow-text">Mývatn → Fáskrúðsfjörður · <strong>3.5 hrs · 270 km</strong></div></div>
       </div>
     </div>
@@ -990,22 +1071,22 @@
       <div class="itinerary">
         <div class="itin-title">Day 8 · Arrival &amp; Zodiac</div>
         <div class="itin-row"><div class="itin-time">08:30</div><div class="itin-desc">Leave Fáskrúðsfjörður. Coast road south.</div></div>
-        <div class="itin-row"><div class="itin-time">12:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.6586,-14.2811" target="_blank" rel="noopener">Hótel Framtíð</a></strong>, Djúpivogur.</div></div>
+        <div class="itin-row"><div class="itin-time">12:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=H%C3%B3tel%20Framt%C3%AD%C3%B0%2C%20Dj%C3%BApivogur" target="_blank" rel="noopener">Hótel Framtíð</a></strong>, Djúpivogur.</div></div>
         <div class="itin-row"><div class="itin-time">15:00</div><div class="itin-desc">Arrive Hotel Jökulsárlón. Check in.</div></div>
-        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0480,-16.1789" target="_blank" rel="noopener">Zodiac boat tour</a></strong> on the lagoon — 1 hr, suit provided. Book at icelagoon.is for the late slot.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=J%C3%B6kuls%C3%A1rl%C3%B3n%20Glacier%20Lagoon%20boat%20tours%2C%20Iceland" target="_blank" rel="noopener">Zodiac boat tour</a></strong> on the lagoon — 1 hr, suit provided. Book at icelagoon.is for the late slot.</div></div>
         <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at the hotel.</div></div>
-        <div class="itin-row"><div class="itin-time">22:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0432,-16.1839" target="_blank" rel="noopener">Diamond Beach</a></strong> at last light — icebergs washed onto black sand.</div></div>
+        <div class="itin-row"><div class="itin-time">22:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Diamond%20Beach%2C%20J%C3%B6kuls%C3%A1rl%C3%B3n%2C%20Iceland" target="_blank" rel="noopener">Diamond Beach</a></strong> at last light — icebergs washed onto black sand.</div></div>
       </div>
       <div class="itinerary" style="margin-top:14px">
         <div class="itin-title">Day 9 · Skaftafell</div>
         <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Early breakfast. Drive 45 min west to Skaftafell National Park.</div></div>
-        <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.9961,-16.8336" target="_blank" rel="noopener">Guided glacier walk</a></strong> on Falljökull. 3 hrs, crampons.</div></div>
+        <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Fallj%C3%B6kull%20glacier%2C%20Skaftafell" target="_blank" rel="noopener">Guided glacier walk</a></strong> on Falljökull. 3 hrs, crampons.</div></div>
         <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at the Skaftafell Visitor Centre.</div></div>
-        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc">Hike to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0271,-16.9756" target="_blank" rel="noopener">Svartifoss</a></strong> — waterfall framed by hexagonal basalt. 90 min round trip.</div></div>
-        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.0117,-16.3717" target="_blank" rel="noopener">Fjallsárlón</a></strong> — smaller, quieter glacier lagoon. No tour buses.</div></div>
+        <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc">Hike to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Svartifoss%20waterfall%2C%20Skaftafell" target="_blank" rel="noopener">Svartifoss</a></strong> — waterfall framed by hexagonal basalt. 90 min round trip.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Fjalls%C3%A1rl%C3%B3n%20glacier%20lagoon%2C%20Iceland" target="_blank" rel="noopener">Fjallsárlón</a></strong> — smaller, quieter glacier lagoon. No tour buses.</div></div>
         <div class="itin-row"><div class="itin-time">19:30</div><div class="itin-desc">Back to hotel. Long dinner. Sleep deeply.</div></div>
       </div>
-      <div class="parking-note"><div class="pn-title">Vatnajökull region</div><div>Jökulsárlón <span class="pn-amt">1000 ISK</span> via Parka — valid until midnight, in/out OK. Diamond Beach uses the same ticket. Skaftafell <span class="pn-amt">1040 ISK</span> via Parka — <strong>50% discount</strong> if you also park at Jökulsárlón on the same day. Fjallsárlón free if parking at the visitor centre.</div></div><div class="chap-tags"><span class="tag">Zodiac</span><span class="tag">Diamond Beach</span><span class="tag">Glacier walk</span><span class="tag">Svartifoss</span><span class="tag">Fjallsárlón</span></div>
+      <div class="parking-note"><div class="pn-title">Vatnajökull region</div><div>Jökulsárlón <span class="pn-amt">1000 ISK</span> via Parka — valid until midnight, in/out OK. Diamond Beach uses the same ticket. Skaftafell <span class="pn-amt">1040 ISK</span> via Parka — <strong>50% discount</strong> if you also park at Jökulsárlón on the same day. Fjallsárlón free if parking at the visitor centre.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Jökulsárlón Zodiac</span><span class="gear">Pre-booked · warm layers</span>One 1,000 ISK ticket covers the lagoon + both Diamond Beach lots, valid till midnight. Flotation suit provided over your clothes.</li><li><span class="fn-place">Diamond Beach</span><span class="gear">Stay back from surf</span>Same parking ticket. Sneaker waves are real — keep well back from the water. Boots.</li><li><span class="fn-place">Skaftafell / Svartifoss</span><span class="gear">1040 ISK · boots</span>Parka — 50% off if you parked at Jökulsárlón the same day. Svartifoss is ~90 min round trip, uphill.</li><li><span class="fn-place">Glacier walk (Falljökull)</span><span class="gear">Waterproof boots</span>Guided; crampons + helmet provided. Arrive 15 min early, warm layers under a shell.</li><li><span class="fn-place">Fjallsárlón</span><span class="gear">Go straight in</span>Free with visitor-centre parking. Quieter lagoon, no tour buses.</li></ul></div><div class="chap-tags"><span class="tag">Zodiac</span><span class="tag">Diamond Beach</span><span class="tag">Glacier walk</span><span class="tag">Svartifoss</span><span class="tag">Fjallsárlón</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/20582185/pexels-photo-20582185.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
@@ -1018,7 +1099,7 @@
         <div class="hotel-loc">Reynivellir III · 781 Hornafjörður</div>
         <p class="hotel-blurb">Modern glass-front hotel 10 min from the lagoon itself. Closest serious accommodation to the icebergs.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">3</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$535</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$1,070</div></div></div>
-        <div class="links"><a class="lnk" href="https://hoteljokulsarlon.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/jokulsarlon.html?checkin=2026-05-30&amp;checkout=2026-06-01&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.2683,-15.4878" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://hoteljokulsarlon.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/jokulsarlon.html?checkin=2026-05-30&amp;checkout=2026-06-01&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking · 2N →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=H%C3%B3tel%20J%C3%B6kuls%C3%A1rl%C3%B3n%20Glacier%20Lagoon%20Hotel%2C%20Hornafj%C3%B6r%C3%B0ur" target="_blank" rel="noopener">Open in Google Maps →</a></div>
         <div class="day-flow"><div class="day-flow-title">Drive to glacier region</div><div class="day-flow-text">Fáskrúðsfjörður → Reynivellir · <strong>3.5 hrs · 270 km</strong></div></div>
       </div>
     </div>
@@ -1038,18 +1119,18 @@
       <div class="chap-place">SOUTH · KIRKJUBÆJARKLAUSTUR</div>
       <h3 class="chap-title">Cabins on a <em>moss-covered lava field.</em></h3>
       <p class="chap-lead">A two-hour drive west brings you to Kirkjubæjarklaustur — a name so long Icelanders shorten it to "Klaustur" — where moss has crept for nine centuries over a lava flow the size of a small country, and where twenty-five modern cabins have been set into it like stones on a board. Magma. No tour buses stop here. The restaurant is quietly excellent. The hot tub faces the moss.</p>
-      <p class="chap-body">Stop en route at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7708,-18.1717" target="_blank" rel="noopener">Fjaðrárgljúfur</a></strong> — a hundred-metre-deep canyon carved by a glacial river. A viewing platform. Twenty minutes. You will not forget it.</p>
+      <p class="chap-body">Stop en route at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Fja%C3%B0r%C3%A1rglj%C3%BAfur%20canyon%2C%20Iceland" target="_blank" rel="noopener">Fjaðrárgljúfur</a></strong> — a hundred-metre-deep canyon carved by a glacial river. A viewing platform. Twenty minutes. You will not forget it.</p>
       <div class="itinerary">
         <div class="itin-title">Day 10 · Itinerary</div>
         <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc">Breakfast at Hótel Jökulsárlón. Slow morning.</div></div>
         <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Depart west on Route 1.</div></div>
-        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7708,-18.1717" target="_blank" rel="noopener">Fjaðrárgljúfur canyon</a></strong> — walk the rim trail, 45 min.</div></div>
-        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7903,-18.0653" target="_blank" rel="noopener">Systrakaffi</a></strong> in Kirkjubæjarklaustur.</div></div>
+        <div class="itin-row"><div class="itin-time">12:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Fja%C3%B0r%C3%A1rglj%C3%BAfur%20canyon%2C%20Iceland" target="_blank" rel="noopener">Fjaðrárgljúfur canyon</a></strong> — walk the rim trail, 45 min.</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Systrakaffi%2C%20Kirkjub%C3%A6jarklaustur" target="_blank" rel="noopener">Systrakaffi</a></strong> in Kirkjubæjarklaustur.</div></div>
         <div class="itin-row"><div class="itin-time">15:00</div><div class="itin-desc">Check into Magma. Walk the lava field. Hot tub.</div></div>
-        <div class="itin-row"><div class="itin-time">17:30</div><div class="itin-desc"><strong>Optional:</strong> drive to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7864,-17.9961" target="_blank" rel="noopener">Dverghamrar</a></strong> basalt columns or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.7889,-18.0581" target="_blank" rel="noopener">Systrafoss</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">17:30</div><div class="itin-desc"><strong>Optional:</strong> drive to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Dverghamrar%20basalt%20columns%2C%20Iceland" target="_blank" rel="noopener">Dverghamrar</a></strong> basalt columns or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Systrafoss%20waterfall%2C%20Kirkjub%C3%A6jarklaustur" target="_blank" rel="noopener">Systrafoss</a></strong>.</div></div>
         <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Dinner at the hotel — small menu, local produce, genuinely good.</div></div>
       </div>
-      <div class="parking-note"><div class="pn-title">South parking</div><div>Fjaðrárgljúfur canyon <span class="pn-amt">1000 ISK</span> via Parka — valid until midnight. Magma Hotel has free on-site parking. Dverghamrar and Systrafoss are free.</div></div><div class="chap-tags"><span class="tag">Fjaðrárgljúfur</span><span class="tag">Lava cabins</span><span class="tag">Hot tub</span><span class="tag">Quiet night</span></div>
+      <div class="parking-note"><div class="pn-title">South parking</div><div>Fjaðrárgljúfur canyon <span class="pn-amt">1000 ISK</span> via Parka — valid until midnight. Magma Hotel has free on-site parking. Dverghamrar and Systrafoss are free.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Fjaðrárgljúfur</span><span class="gear">1000 ISK · boots</span>Parka. Road 206 is gravel for 2 km — drive it slow, the Sportage is fine. Rim trail ~45 min, can be muddy.</li><li><span class="fn-place">Systrakaffi</span><span class="gear">Lunch stop</span>In Klaustur, reliable lunch before checking in.</li><li><span class="fn-place">Dverghamrar &amp; Systrafoss</span><span class="gear">Go straight in</span>Free roadside stops near Klaustur — basalt columns + a twin waterfall. 15 min each.</li><li><span class="fn-place">Magma Hotel</span><span class="gear">Swimsuit</span>Free parking. Hot tub faces the moss field — pack your suit on top.</li></ul></div><div class="chap-tags"><span class="tag">Fjaðrárgljúfur</span><span class="tag">Lava cabins</span><span class="tag">Hot tub</span><span class="tag">Quiet night</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/20582024/pexels-photo-20582024.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
@@ -1062,7 +1143,7 @@
         <div class="hotel-loc">Brekkur · 880 Kirkjubæjarklaustur</div>
         <p class="hotel-blurb">Twenty-five cabin-style rooms scattered across a private lava field. Modern Scandinavian, in-floor heating, private terraces. Doesn't do tour groups on principle.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">1</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$700</div></div><div><div class="h-stat-l">Rating</div><div class="h-stat-v">4.7★</div></div></div>
-        <div class="links"><a class="lnk" href="https://www.magmahotel.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/magma.html?checkin=2026-06-01&amp;checkout=2026-06-02&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=63.7733,-18.0089" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://www.magmahotel.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/magma.html?checkin=2026-06-01&amp;checkout=2026-06-02&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=Magma%20H%C3%B3tel%2C%20Kirkjub%C3%A6jarklaustur" target="_blank" rel="noopener">Open in Google Maps →</a></div>
         <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Jökulsárlón → Magma · <strong>2 hrs · 175 km</strong> via the canyon</div></div>
       </div>
     </div>
@@ -1084,13 +1165,13 @@
       <div class="itinerary">
         <div class="itin-title">Day 11 · South coast highlights reel</div>
         <div class="itin-row"><div class="itin-time">08:00</div><div class="itin-desc">Early breakfast at Magma. Long day.</div></div>
-        <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.4061,-19.0436" target="_blank" rel="noopener">Reynisfjara</a></strong> black sand beach — basalt columns, Reynisdrangar sea stacks. Stay back from the water.</div></div>
-        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Coffee at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.4197,-19.0019" target="_blank" rel="noopener">Smiðjan Brugghús</a></strong> in Vík.</div></div>
-        <div class="itin-row"><div class="itin-time">11:45</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.5320,-19.5119" target="_blank" rel="noopener">Skógafoss</a></strong> — climb the 370 steps to the top. 45 min.</div></div>
-        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.6156,-19.9889" target="_blank" rel="noopener">Seljalandsfoss</a></strong> — walk behind it. Bring a waterproof layer.</div></div>
-        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=63.5436,-19.5106" target="_blank" rel="noopener">Gamla Fjósið</a></strong> — converted cowshed, best burger in south Iceland.</div></div>
-        <div class="itin-row"><div class="itin-time">15:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.2558,-21.1300" target="_blank" rel="noopener">Þingvellir</a></strong> — walk the Almannagjá rift between two continents.</div></div>
-        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.3107,-20.3017" target="_blank" rel="noopener">Geysir</a></strong> + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.3275,-20.1206" target="_blank" rel="noopener">Gullfoss</a></strong>. Strokkur erupts every 8 min. Gullfoss drops into a canyon.</div></div>
+        <div class="itin-row"><div class="itin-time">09:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Reynisfjara%20Black%20Sand%20Beach%2C%20Iceland" target="_blank" rel="noopener">Reynisfjara</a></strong> black sand beach — basalt columns, Reynisdrangar sea stacks. Stay back from the water.</div></div>
+        <div class="itin-row"><div class="itin-time">11:00</div><div class="itin-desc">Coffee at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Smi%C3%B0jan%20Bruggh%C3%BAs%2C%20V%C3%ADk" target="_blank" rel="noopener">Smiðjan Brugghús</a></strong> in Vík.</div></div>
+        <div class="itin-row"><div class="itin-time">11:45</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sk%C3%B3gafoss%20waterfall%2C%20Iceland" target="_blank" rel="noopener">Skógafoss</a></strong> — climb the 527 steps to the top. 45 min.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Seljalandsfoss%20waterfall%2C%20Iceland" target="_blank" rel="noopener">Seljalandsfoss</a></strong> — walk behind it. Bring a waterproof layer.</div></div>
+        <div class="itin-row"><div class="itin-time">14:00</div><div class="itin-desc">Lunch at <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gamla%20Fj%C3%B3si%C3%B0%20restaurant%2C%20Iceland" target="_blank" rel="noopener">Gamla Fjósið</a></strong> — converted cowshed, best burger in south Iceland.</div></div>
+        <div class="itin-row"><div class="itin-time">15:30</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%9Eingvellir%20National%20Park%2C%20Iceland" target="_blank" rel="noopener">Þingvellir</a></strong> — walk the Almannagjá rift between two continents.</div></div>
+        <div class="itin-row"><div class="itin-time">17:00</div><div class="itin-desc"><strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Geysir%20Strokkur%2C%20Iceland" target="_blank" rel="noopener">Geysir</a></strong> + <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gullfoss%20waterfall%2C%20Iceland" target="_blank" rel="noopener">Gullfoss</a></strong>. Strokkur erupts every 8 min. Gullfoss drops into a canyon.</div></div>
         <div class="itin-row"><div class="itin-time">19:00</div><div class="itin-desc">Arrive ION. Check in. Geothermal pool. Dinner at Silfra restaurant.</div></div>
         <div class="itin-row"><div class="itin-time">22:00</div><div class="itin-desc">Last drink at the Northern Lights bar.</div></div>
       </div>
@@ -1098,18 +1179,18 @@
         <div class="itin-title">Day 12 · Leisure day at ION</div>
         <div class="itin-row"><div class="itin-time">10:00</div><div class="itin-desc">Late breakfast. No agenda. Geothermal pool, sauna, repeat.</div></div>
         <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch at Silfra restaurant. Read. Nap. Soak again.</div></div>
-        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc"><strong>Optional:</strong> drive 20 min to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.2558,-21.1300" target="_blank" rel="noopener">Þingvellir</a></strong> for a second visit or the Silfra snorkel.</div></div>
+        <div class="itin-row"><div class="itin-time">16:00</div><div class="itin-desc"><strong>Optional:</strong> drive 20 min to <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%9Eingvellir%20National%20Park%2C%20Iceland" target="_blank" rel="noopener">Þingvellir</a></strong> for a second visit or the Silfra snorkel.</div></div>
         <div class="itin-row"><div class="itin-time">20:00</div><div class="itin-desc">Final dinner. Northern Lights bar. One last soak.</div></div>
       </div>
       <div class="itinerary" style="margin-top:14px">
         <div class="itin-title">Day 13 · Flight home</div>
         <div class="itin-row"><div class="itin-time">09:00</div><div class="itin-desc">Slow breakfast. One more spa session.</div></div>
         <div class="itin-row"><div class="itin-time">12:00</div><div class="itin-desc">Depart ION. 50 min to Reykjavík.</div></div>
-        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch: <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1452,-21.9322" target="_blank" rel="noopener">Sandholt bakery</a></strong>, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1456,-21.9354" target="_blank" rel="noopener">Kaffi Vínyl</a></strong>, or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=64.1469,-21.9387" target="_blank" rel="noopener">Íslenski Barinn</a></strong>.</div></div>
+        <div class="itin-row"><div class="itin-time">13:00</div><div class="itin-desc">Lunch: <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sandholt%20Bakery%2C%20Reykjav%C3%ADk" target="_blank" rel="noopener">Sandholt bakery</a></strong>, <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kaffi%20V%C3%ADnyl%2C%20Reykjav%C3%ADk" target="_blank" rel="noopener">Kaffi Vínyl</a></strong>, or <strong><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%8Dslenski%20Barinn%2C%20Reykjav%C3%ADk" target="_blank" rel="noopener">Íslenski Barinn</a></strong>.</div></div>
         <div class="itin-row"><div class="itin-time">14:30</div><div class="itin-desc">Drive to KEF. Return rental. Check in.</div></div>
         <div class="itin-row"><div class="itin-time">16:45</div><div class="itin-desc">FI 689 departs. Landing at 20:50 local.</div></div>
       </div>
-      <div class="parking-note"><div class="pn-title">Golden Circle &amp; south coast</div><div>Reynisfjara <span class="pn-amt">1000 ISK</span> (lower lot) or <span class="pn-amt">750 ISK</span> (upper lot) via Parka. Skógafoss <span class="pn-amt">1000 ISK</span>. Seljalandsfoss <span class="pn-amt">1000 ISK</span>. Þingvellir <span class="pn-amt">1000 ISK</span> via Parka or checkit.is. Geysir <span class="pn-amt">1000 ISK</span> (8 hr max). Gullfoss <span class="pn-amt">free</span>. ION Adventure Hotel has free guest parking.</div></div><div class="chap-tags"><span class="tag">Reynisfjara</span><span class="tag">Skógafoss</span><span class="tag">Seljalandsfoss</span><span class="tag">Þingvellir</span><span class="tag">Geysir</span><span class="tag">Gullfoss</span></div>
+      <div class="parking-note"><div class="pn-title">Golden Circle &amp; south coast</div><div>Reynisfjara <span class="pn-amt">1000 ISK</span> (lower lot) or <span class="pn-amt">750 ISK</span> (upper lot) via Parka. Skógafoss <span class="pn-amt">1000 ISK</span>. Seljalandsfoss <span class="pn-amt">1000 ISK</span>. Þingvellir <span class="pn-amt">1000 ISK</span> via Parka or checkit.is. Geysir <span class="pn-amt">1000 ISK</span> (8 hr max). Gullfoss <span class="pn-amt">free</span>. ION Adventure Hotel has free guest parking.</div></div><div class="field-note"><div class="fn-title">On the ground</div><ul class="fn-list"><li><span class="fn-place">Reynisfjara</span><span class="gear">Pay · STAY 30m BACK</span>Deadly sneaker waves — never turn your back on the sea, keep 30 m from the surf. Paid parking. Boots.</li><li><span class="fn-place">Skógafoss</span><span class="gear">Rain shell</span>~1,000 ISK parking. 527 steps to the top viewpoint; heavy spray at the base.</li><li><span class="fn-place">Seljalandsfoss</span><span class="gear">Full rain kit · waterproof boots</span>~1,000 ISK. You walk BEHIND the falls — you WILL get soaked, path is slippery. Non-negotiable rain gear.</li><li><span class="fn-place">Þingvellir</span><span class="gear">Pay P1 (Hakið)</span>~1,000 ISK at the Hakið lot. Flat rift walk between continents. Light layers.</li><li><span class="fn-place">Geysir &amp; Gullfoss</span><span class="gear">Stay behind ropes</span>Geysir parking cheap/free, Strokkur erupts ~every 8 min. Gullfoss free parking, rain shell at the lower platform.</li><li><span class="fn-place">ION pool</span><span class="gear">Swimsuit</span>Free guest parking. Geothermal pool + Northern Lights bar — wind down.</li></ul></div><div class="chap-tags"><span class="tag">Reynisfjara</span><span class="tag">Skógafoss</span><span class="tag">Seljalandsfoss</span><span class="tag">Þingvellir</span><span class="tag">Geysir</span><span class="tag">Gullfoss</span></div>
     </div>
     <div class="chap-card">
       <div class="chap-img" style="background-image:url(&#39;https://images.pexels.com/photos/20458518/pexels-photo-20458518.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&#39;)"><div class="star-badge confirmed">Booked</div></div>
@@ -1122,7 +1203,7 @@
         <div class="hotel-loc">Nesjavellir · 801 Selfoss</div>
         <p class="hotel-blurb">Design Hotels member. Concrete cube on stilts with salvaged Icelandic wood interiors, a geothermal pool, a bar called Northern Lights, and floor-to-ceiling glass facing the Þingvallavatn rift.</p>
         <div class="hotel-stats"><div><div class="h-stat-l">Tier</div><div class="h-stat-v">2</div></div><div><div class="h-stat-l">Per night</div><div class="h-stat-v">~$500</div></div><div><div class="h-stat-l">2 nights</div><div class="h-stat-v">~$1,000</div></div></div>
-        <div class="links"><a class="lnk" href="https://www.ioniceland.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/ion-luxury-adventure.html?checkin=2026-06-02&amp;checkout=2026-06-04&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=64.1083,-21.3236" target="_blank" rel="noopener">📍 Open in Google Maps</a></div>
+        <div class="links"><a class="lnk" href="https://www.ioniceland.is/" target="_blank" rel="noopener">Hotel site →</a><a class="lnk primary" href="https://www.booking.com/hotel/is/ion-luxury-adventure.html?checkin=2026-06-02&amp;checkout=2026-06-04&amp;group_adults=2&amp;no_rooms=1" target="_blank" rel="noopener">Booking.com →</a></div><div class="map-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=ION%20Adventure%20Hotel%2C%20Nesjavellir%2C%20Iceland" target="_blank" rel="noopener">Open in Google Maps →</a></div>
         <div class="day-flow"><div class="day-flow-title">Today's drive</div><div class="day-flow-text">Magma → ION · <strong>4 hrs · 290 km</strong> via south coast</div></div>
       </div>
     </div>
@@ -1183,7 +1264,7 @@
         <p class="tot-tip"><strong>ION Adventure Hotel.</strong> Booked direct via ioniceland.is — ref <strong>60744SG065703</strong>. Ask about Northern Lights wake-up + spa credit at check-in.</p>
         <p class="tot-tip"><strong>Hótel Jökulsárlón.</strong> Booked direct — ref <strong>VQQZCXW</strong>. Reception: <strong>+354 478 1000</strong>.</p>
         <p class="tot-tip"><strong>Zodiac at Jökulsárlón.</strong> Reserve at icelagoon.is weeks ahead. Late-afternoon slots are best for light.</p>
-        <p class="tot-tip"><strong>Whale tour.</strong> Book North Sailing for the classic oak schooner. Weather-dependent.</p>
+        <p class="tot-tip"><strong>Whales + puffins.</strong> Plan: <strong>Húsavík Adventures</strong> RIB, Wed 12pm (whales + Puffin Island). Gentle Giants GG2 is the backup; North Sailing's combo is sold out. Free land puffins at Tjörnes &amp; Hafnarhólmi.</p>
         <p class="tot-tip"><strong>Genius Level 3.</strong> Status unlocks 20% off and free breakfast at many Booking.com properties. Defaulted for the chain bookings.</p>
       </aside>
     </div>
@@ -1191,6 +1272,23 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
+
+<!-- ============ PACKING ============ -->
+<section class="packing" id="packing">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">CHAPTER VIII · THE KIT</div>
+      <h2 class="section-title">What goes <em>in the bags.</em></h2>
+      <p class="section-deck">Tap any item to check it off — your progress saves on this device. Gold boxes are the trip-specific essentials people forget. Conditions: 5–12°C, high wind, occasional rain, ~21 hrs daylight.</p>
+    </div>
+    <div class="pack-grid"><div class="pack-card"><h4>Carry-on capsule</h4><ul class="pack-list"><li class="pack-item" data-pk="0">2 merino base layers (long sleeve)</li><li class="pack-item" data-pk="1">2 merino t-shirts</li><li class="pack-item" data-pk="2">1 midlayer fleece</li><li class="pack-item" data-pk="3">1 lightweight down / synthetic puffy</li><li class="pack-item flag" data-pk="4">Hardshell rain jacket — waterproof + windproof<span class="pack-flag-note">essential</span></li><li class="pack-item" data-pk="5">Rain pants (lightweight, packable)</li><li class="pack-item" data-pk="6">2 quick-dry hiking pants (no jeans/cotton)</li><li class="pack-item" data-pk="7">3–4 merino underwear</li><li class="pack-item" data-pk="8">3–4 merino hiking socks</li><li class="pack-item" data-pk="9">Swimsuit</li><li class="pack-item flag" data-pk="10">Windproof gloves, buff, beanie<span class="pack-flag-note">essential</span></li></ul></div><div class="pack-card"><h4>Checked bag</h4><ul class="pack-list"><li class="pack-item" data-pk="11">Jeans / chinos for dinners</li><li class="pack-item" data-pk="12">Dress shoes (optional)</li><li class="pack-item" data-pk="13">Extra layers</li><li class="pack-item" data-pk="14">Toiletries</li><li class="pack-item" data-pk="15">Chargers / cables</li></ul></div><div class="pack-card"><h4>Day packs (2×)</h4><ul class="pack-list"><li class="pack-item" data-pk="16">Rain jacket (always)</li><li class="pack-item" data-pk="17">Extra layer (always)</li><li class="pack-item" data-pk="18">Gloves + buff (always)</li><li class="pack-item" data-pk="19">Water bottle</li><li class="pack-item" data-pk="20">Snacks</li><li class="pack-item" data-pk="21">Sunglasses + sunscreen</li><li class="pack-item" data-pk="22">Camera / phone</li><li class="pack-item" data-pk="23">Swimsuit + small towel</li></ul></div><div class="pack-card"><h4>Documents &amp; money</h4><ul class="pack-list"><li class="pack-item" data-pk="24">Passports — valid 6+ months past June</li><li class="pack-item" data-pk="25">Driver's license (US license is fine)</li><li class="pack-item flag" data-pk="26">Credit card with a 4-digit PIN (gas pumps)<span class="pack-flag-note">essential</span></li><li class="pack-item" data-pk="27">Card with no foreign-transaction fee</li><li class="pack-item" data-pk="28">Generali travel-insurance policy (offline)</li><li class="pack-item" data-pk="29">Hotel + tour confirmations (offline)</li></ul></div><div class="pack-card"><h4>Electronics &amp; power</h4><ul class="pack-list"><li class="pack-item flag" data-pk="30">EU plug adapter — Type F (230V)<span class="pack-flag-note">essential</span></li><li class="pack-item" data-pk="31">Confirm hair tools are dual-voltage</li><li class="pack-item" data-pk="32">Power bank</li><li class="pack-item" data-pk="33">Phone car mount</li><li class="pack-item" data-pk="34">12V USB car charger</li><li class="pack-item" data-pk="35">Offline Google Maps for the route</li><li class="pack-item" data-pk="36">112 Iceland app (SOS)</li><li class="pack-item" data-pk="37">Camera batteries + memory cards</li></ul></div><div class="pack-card"><h4>Health &amp; toiletries</h4><ul class="pack-list"><li class="pack-item flag" data-pk="38">Eye / sleep mask — midnight sun<span class="pack-flag-note">essential</span></li><li class="pack-item flag" data-pk="39">Motion-sickness tablets — whale boat<span class="pack-flag-note">essential</span></li><li class="pack-item flag" data-pk="40">Blister kit — Compeed + moleskin<span class="pack-flag-note">essential</span></li><li class="pack-item" data-pk="41">Medications + small first-aid kit</li><li class="pack-item" data-pk="42">Lip balm + hand/face moisturizer</li><li class="pack-item" data-pk="43">Earplugs</li></ul></div><div class="pack-card"><h4>Pools &amp; wet stops</h4><ul class="pack-list"><li class="pack-item" data-pk="44">Flip-flops / slides for pool decks</li><li class="pack-item" data-pk="45">Hair conditioner / leave-in (silica)</li><li class="pack-item" data-pk="46">Dry bag or gallon ziplocks</li><li class="pack-item flag" data-pk="47">Head net + midge repellent — Mývatn<span class="pack-flag-note">essential</span></li></ul></div><div class="pack-card"><h4>Driving &amp; food</h4><ul class="pack-list"><li class="pack-item" data-pk="48">Reusable shopping bags</li><li class="pack-item" data-pk="49">Soft cooler bag (Bónus / Krónan runs)</li><li class="pack-item" data-pk="50">Trash bags for the car</li><li class="pack-item" data-pk="51">Travel mug / thermos</li></ul></div></div>
+    <div class="pack-meta">
+      <span class="pack-progress" id="pack-progress">0 / 52 packed</span>
+      <button class="pack-reset" id="pack-reset" type="button">Reset list</button>
+    </div>
+  </div>
+</section>
+
 <footer class="foot">
   <div class="foot-mark">Sjáumst.</div>
   <div class="foot-meta">ÍSLAND · MMXXVI · A 12-NIGHT SAGA</div>
@@ -1303,6 +1401,48 @@
 
 <script>
 (function(){
+  const KEY = "ice-packing-v1";
+  const TOTAL = 52;
+  const items = Array.from(document.querySelectorAll(".pack-item"));
+  const prog = document.getElementById("pack-progress");
+  const reset = document.getElementById("pack-reset");
+  if(!items.length) return;
+
+  function load(){
+    try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; }
+  }
+  function save(state){
+    try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function refreshCount(){
+    const n = items.filter(i=>i.classList.contains("checked")).length;
+    if(prog) prog.textContent = n + " / " + TOTAL + " packed";
+  }
+
+  let state = load();
+  items.forEach(it=>{
+    const id = it.getAttribute("data-pk");
+    if(state[id]) it.classList.add("checked");
+    it.addEventListener("click", ()=>{
+      it.classList.toggle("checked");
+      state[id] = it.classList.contains("checked");
+      save(state);
+      refreshCount();
+    });
+  });
+  if(reset) reset.addEventListener("click", ()=>{
+    state = {};
+    save(state);
+    items.forEach(i=>i.classList.remove("checked"));
+    refreshCount();
+  });
+  refreshCount();
+})();
+</script>
+
+
+<script>
+(function(){
   const EXPECTED_HASH = "948c710e16a15027a561598d053fdf1e910b9d222cab0ac0d09f23a01cc8416b";
   const KEY = "ice2026-pg";
   const TTL_MS = 90 * 24 * 60 * 60 * 1000;  // 90 days
@@ -1386,6 +1526,27 @@
   } else {
     init();
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  var mm = document.getElementById('minimap');
+  if(!mm) return;
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('article.chapter'));
+  function check(){
+    var vh = window.innerHeight, on = false;
+    for(var i=0;i<chapters.length;i++){
+      var r = chapters[i].getBoundingClientRect();
+      if(r.top < vh*0.5 && r.bottom > 0){ on = true; break; }
+    }
+    mm.classList.toggle('mm-revealed', on);
+  }
+  window.addEventListener('scroll', check, {passive:true});
+  window.addEventListener('resize', check, {passive:true});
+  setInterval(check, 300);
+  check();
 })();
 </script>
 
